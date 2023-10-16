@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ch8h5g32gds44"]
 
-[ext_resource type="Script" path="res://Menus/main_menu.gd" id="1_nrhdp"]
-[ext_resource type="Texture2D" uid="uid://bg18gkdhm17kt" path="res://gen_sprites/bits_byte.png" id="2_je68j"]
+[ext_resource type="Script" path="res://Levels/Menus/main_menu.gd" id="1_xq53b"]
+[ext_resource type="Texture2D" uid="uid://bg18gkdhm17kt" path="res://gen_sprites/bits_byte.png" id="2_6v22x"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -12,12 +12,12 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_nrhdp")
+script = ExtResource("1_xq53b")
 
 [node name="BitsByte" type="Sprite2D" parent="."]
 position = Vector2(-25, -151)
 scale = Vector2(1.25658, 1)
-texture = ExtResource("2_je68j")
+texture = ExtResource("2_6v22x")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

@@ -1,6 +1,8 @@
+#Made on 10/16/2023 By Darius Wolfe
 extends Control
 
 @onready var animTimer := $anim_timer
+var lSelect = load("res://Menus/Level_Select.tscn")
 var counter = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,8 +23,10 @@ func _process(delta):
 		
 		
 
-#func _on_start_button_pressed():
-#	get_tree().change_scene("")
+func _on_start_button_pressed():
+	var load_level_select = lSelect.instantiate()
+	get_parent().add_child(load_level_select)
+	get_tree().change_scene_to_file("res://Menus/Level_Select.tscn")
 
 
 #func _on_options_button_pressed():

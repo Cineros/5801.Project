@@ -1,3 +1,4 @@
+#Made on 10/16/2023 By Darius Wolfe
 extends Node2D
 var level = 1
 @export var SPEED: int = 2000 * level

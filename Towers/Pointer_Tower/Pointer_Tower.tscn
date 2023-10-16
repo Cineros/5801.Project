@@ -3,7 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://cni5thns7ax1p" path="res://Towers/Pointer_Tower/Pointer.png" id="1_nni11"]
 
 [sub_resource type="GDScript" id="GDScript_w5maa"]
-script/source = "extends Node2D
+script/source = "#Made on 10/16/2023 By Darius Wolfe
+extends Node2D
 
 var mousePOS
 
