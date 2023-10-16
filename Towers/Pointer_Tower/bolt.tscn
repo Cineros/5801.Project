@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjhpmvrwtb54h"]
+
+[ext_resource type="Script" path="res://Towers/Pointer_Tower/fireBolt.gd" id="1_ye5xj"]
+[ext_resource type="Texture2D" uid="uid://b00f6s3rb5gei" path="res://Towers/Pointer_Tower/bolt.png" id="2_2dy2p"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1q2ol"]
+_surfaces = [{
+"2d": true,
+"aabb": AABB(-16.4, -86.4, 0, 21.4, 45.8, 0),
+"attribute_data": PackedByteArray(0, 0, 0, 63, 158, 94, 169, 62, 0, 0, 0, 63, 231, 106, 171, 62, 92, 143, 2, 63, 233, 149, 178, 62, 92, 143, 2, 63, 18, 131, 192, 62, 193, 202, 1, 63, 18, 131, 192, 62, 201, 118, 254, 62, 207, 247, 211, 62, 36, 185, 252, 62, 207, 247, 211, 62, 53, 94, 250, 62, 244, 108, 214, 62, 217, 206, 247, 62, 153, 76, 213, 62, 217, 206, 247, 62, 97, 195, 211, 62, 106, 188, 244, 62, 243, 176, 208, 62, 106, 188, 244, 62, 168, 53, 205, 62, 215, 52, 239, 62, 233, 38, 177, 62, 252, 169, 241, 62, 233, 38, 177, 62, 180, 200, 246, 62, 140, 74, 170, 62, 180, 200, 246, 62, 195, 134, 167, 62),
+"format": 33558545,
+"index_count": 42,
+"index_data": PackedByteArray(15, 0, 0, 0, 1, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 11, 0, 11, 0, 12, 0, 13, 0, 14, 0, 15, 0, 1, 0, 1, 0, 3, 0, 4, 0, 4, 0, 6, 0, 8, 0, 9, 0, 11, 0, 13, 0, 13, 0, 14, 0, 1, 0, 1, 0, 4, 0, 8, 0, 9, 0, 13, 0, 1, 0, 1, 0, 8, 0, 9, 0),
+"primitive": 3,
+"vertex_count": 16,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 52, 51, 169, 194, 0, 0, 0, 0, 52, 51, 165, 194, 0, 0, 160, 64, 52, 51, 151, 194, 0, 0, 160, 64, 0, 0, 120, 194, 0, 0, 96, 64, 0, 0, 120, 194, 0, 0, 192, 191, 0, 0, 44, 194, 192, 204, 76, 192, 0, 0, 44, 194, 0, 0, 176, 192, 104, 102, 34, 194, 0, 0, 0, 193, 204, 204, 38, 194, 0, 0, 0, 193, 204, 204, 44, 194, 0, 0, 48, 193, 204, 204, 56, 194, 0, 0, 48, 193, 104, 102, 70, 194, 48, 51, 131, 193, 0, 0, 154, 194, 0, 0, 96, 193, 0, 0, 154, 194, 0, 0, 16, 193, 102, 102, 167, 194, 0, 0, 16, 193, 204, 204, 172, 194)
+}]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_ye5xj")
+
+[node name="Bolt" type="MeshInstance2D" parent="."]
+position = Vector2(-44, 3.00001)
+rotation = 1.5708
+scale = Vector2(0.579439, 0.641921)
+mesh = SubResource("ArrayMesh_1q2ol")
+texture = ExtResource("2_2dy2p")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-3, -0.5)
+scale = Vector2(1.3, 1.05)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

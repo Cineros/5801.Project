@@ -1,0 +1,19 @@
+extends Node2D
+var level = 1
+@export var SPEED: int = 2000 * level
+
+func _physics_process(delta):
+	var direction = Vector2.RIGHT.rotated(rotation)
+	global_position += SPEED * direction * delta
+
+func destroy():
+	queue_free()
+	
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	destroy()
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
