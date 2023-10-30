@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://yy4qrx6lcmxg"]
+
+[ext_resource type="Script" path="res://enemy_units/spawning_node/spawning_node.gd" id="1_ra7tr"]
+
+[node name="spawning_node" type="Node2D"]
+script = ExtResource("1_ra7tr")
+
+[node name="Marker2D" type="Marker2D" parent="."]

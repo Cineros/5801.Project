@@ -17,8 +17,10 @@ _surfaces = [{
 }]
 
 [node name="4dArrow_Tower" type="Node2D"]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_nkf4o")
 
 [node name="4dArrow" type="MeshInstance2D" parent="."]
+scale = Vector2(0.5, 0.5)
 mesh = SubResource("ArrayMesh_5xgio")
 texture = ExtResource("2_ea686")

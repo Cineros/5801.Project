@@ -12,13 +12,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if counter < 16:
-		get_node("BitsByte").scale += Vector2(delta, delta)/8
+	if counter < 64:
+		get_node("BitsByte").scale += Vector2(delta, delta)/32
 		counter += 1
 	else:
-		get_node("BitsByte").scale -= Vector2(delta, delta)/8
+		get_node("BitsByte").scale -= Vector2(delta, delta)/32
 		counter += 1
-		if counter == 32:
+		if counter == 128:
 			counter = 0
 		
 		
@@ -29,9 +29,9 @@ func _on_start_button_pressed():
 	get_tree().change_scene_to_file("res://Menus/Level_Select.tscn")
 
 
-#func _on_options_button_pressed():
-#	pass # Replace with function body.
-
-
 func _on_quit_button_pressed():
 	get_tree().quit()
+
+
+#func _on_options_button_pressed():
+#	pass # Replace with function body.

@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://c70rkrengytjx"]
+[gd_scene load_steps=5 format=3 uid="uid://c70rkrengytjx"]
 
 [ext_resource type="Texture2D" uid="uid://cni5thns7ax1p" path="res://Towers/Pointer_Tower/Pointer.png" id="1_nni11"]
 
 [sub_resource type="GDScript" id="GDScript_w5maa"]
 script/source = "#Made on 10/16/2023 By Darius Wolfe
 extends Node2D
-
+var level = 1
+var attack_speed = 800 * level
 var mousePOS
+var enemy_spotted
 
 func shoot(angle):
 	var bullet = load(\"res://Towers/Pointer_Tower/bolt.tscn\").instantiate()
@@ -15,14 +17,29 @@ func shoot(angle):
 	var bolt_rotation = get_node(\"Pointer/point\").global_position.direction_to(get_global_mouse_position()).angle()
 	bullet.rotation = bolt_rotation
 	
-func _process(_delta):
-	mousePOS = get_local_mouse_position()
-	rotation += mousePOS.angle()*1
+func _physics_process(delta):
+	enemy_spotted = $range.get_overlapping_bodies()
+	#enemy_spotted is now an array of overlapping bodies.
+	if enemy_spotted.is_empty():
+		pass
+	else:
+		var closest = enemy_spotted.pop_front()
+		look_at(closest)
+	#mousePOS = get_local_mouse_position()
+	#rotation += mousePOS.angle()*1
+	pass
 
 func _input(_event):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		shoot(mousePOS)
 		
+	pass
+
+
+func _on_range_area_entered(area):
+	enemy_spotted.append($range.get_overlapping_bodies())
+	#look_at(enemy_spotted)
+	#shoot(enemy_spotted.angle())
 	pass
 "
 
@@ -39,6 +56,8 @@ _surfaces = [{
 "vertex_data": PackedByteArray(0, 0, 246, 194, 52, 51, 64, 195, 0, 0, 246, 194, 0, 0, 59, 195, 104, 102, 244, 194, 0, 0, 49, 195, 208, 204, 233, 194, 0, 0, 49, 195, 208, 204, 229, 194, 0, 0, 46, 195, 208, 204, 227, 194, 0, 0, 46, 195, 0, 0, 188, 194, 104, 230, 44, 195, 0, 0, 188, 194, 52, 51, 43, 195, 0, 0, 180, 194, 52, 51, 41, 195, 0, 0, 180, 194, 0, 0, 38, 195, 152, 153, 175, 194, 0, 0, 10, 195, 104, 102, 178, 194, 0, 0, 10, 195, 104, 102, 182, 194, 0, 0, 238, 194, 48, 51, 186, 194, 0, 0, 238, 194, 104, 102, 214, 194, 0, 0, 212, 194, 152, 153, 223, 194, 0, 0, 212, 194, 0, 0, 2, 195, 104, 102, 207, 194, 0, 0, 2, 195, 152, 153, 210, 194, 0, 0, 12, 195, 208, 204, 214, 194, 0, 0, 12, 195, 0, 0, 218, 194, 0, 0, 25, 195, 0, 0, 238, 194, 0, 0, 25, 195, 0, 0, 255, 194, 0, 0, 34, 195, 0, 128, 17, 195, 0, 0, 34, 195, 152, 153, 20, 195, 0, 128, 36, 195, 0, 0, 32, 195, 0, 0, 34, 195, 0, 0, 32, 195, 0, 0, 29, 195, 0, 0, 39, 195, 0, 0, 21, 195, 0, 0, 39, 195, 0, 0, 21, 195, 52, 179, 36, 195, 0, 0, 16, 195, 204, 76, 30, 195, 0, 0, 16, 195, 0, 0, 31, 195, 0, 0, 15, 195, 0, 0, 61, 195, 152, 25, 13, 195, 0, 0, 61, 195, 152, 25, 10, 195, 0, 0, 66, 195, 152, 25, 7, 195, 0, 0, 66, 195, 0, 0, 5, 195, 0, 128, 66, 195, 0, 0, 5, 195, 52, 51, 69, 195)
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0nv4v"]
+
 [node name="Pointer_Tower" type="Node2D"]
 script = SubResource("GDScript_w5maa")
 
@@ -53,3 +72,11 @@ texture = ExtResource("1_nni11")
 position = Vector2(-131.685, -225.049)
 rotation = -1.5708
 scale = Vector2(2.3201, 2.31024)
+
+[node name="range" type="Area2D" parent="."]
+
+[node name="range_shape" type="CollisionShape2D" parent="range"]
+scale = Vector2(20, 20)
+shape = SubResource("CircleShape2D_0nv4v")
+
+[connection signal="area_entered" from="range" to="." method="_on_range_area_entered"]
