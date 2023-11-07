@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgu60eus3wlk4"]
+
+[ext_resource type="Script" path="res://interface/interface.gd" id="1_otebm"]
+[ext_resource type="PackedScene" uid="uid://cwimywvr3ay2" path="res://interface/health_bar/hbar.tscn" id="1_q7aua"]
+[ext_resource type="PackedScene" uid="uid://c7j7fkqdjff2" path="res://interface/enemy_counter/counter.tscn" id="2_ewg0x"]
+[ext_resource type="Script" path="res://interface/health_bar/hbar.gd" id="3_pb4ti"]
+
+[node name="Interface" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_otebm")
+
+[node name="Hbar" parent="." instance=ExtResource("1_q7aua")]
+layout_mode = 1
+offset_left = 16.0
+offset_top = 32.0
+offset_right = 616.0
+offset_bottom = 85.0
+script = ExtResource("3_pb4ti")
+
+[node name="counter" parent="." instance=ExtResource("2_ewg0x")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 1040.0
+offset_top = 17.0
+offset_right = 1133.0
+offset_bottom = 105.0
+grow_horizontal = 0
+
+[connection signal="enemy_death" from="." to="counter" method="_on_interface_enemy_death"]
+[connection signal="enemy_spawned" from="." to="counter" method="_on_interface_enemy_spawned"]
+[connection signal="health_changed" from="." to="Hbar" method="_on_interface_health_changed"]

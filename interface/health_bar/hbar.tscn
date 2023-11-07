@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwimywvr3ay2"]
+
+[ext_resource type="Texture2D" uid="uid://c27bqetdk717d" path="res://interface/health_bar/lifebar_bg.png" id="1_r778q"]
+[ext_resource type="PackedScene" uid="uid://1wopaa4mknys" path="res://interface/health_bar/hp_counter.tscn" id="1_tgd8h"]
+[ext_resource type="Texture2D" uid="uid://bfkty2d7iqogy" path="res://interface/health_bar/lifebar_fill.png" id="2_qjgfe"]
+
+[node name="Hbar" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="counter" parent="." instance=ExtResource("1_tgd8h")]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 2
+value = 40.0
+texture_under = ExtResource("1_r778q")
+texture_progress = ExtResource("2_qjgfe")
