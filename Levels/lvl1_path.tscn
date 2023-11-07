@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnrwwe0j6c3op"]
+
+[ext_resource type="PackedScene" uid="uid://yy4qrx6lcmxg" path="res://enemy_units/spawning_node/spawning_node.tscn" id="1_s66ux"]
+[ext_resource type="PackedScene" uid="uid://q27xhegbdpx8" path="res://enemy_units/!/!.tscn" id="2_vj4gx"]
+
+[sub_resource type="Curve2D" id="Curve2D_iqo13"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1, 0, 0, 0, 0, 0, -70, -3, 45.306, -40.5866, -45.306, 40.5866, -140, -27, 0, 0, 0, 0, -203, -75, 15.102, -61.3518, -15.102, 61.3518, -269, -76, 0, 0, 0, 0, -303, -28, 72.6783, -27.3724, -72.6783, 27.3724, -393, -11, 0, 0, 0, 0, -475, -16, 72.6783, -25.4846, -72.6783, 25.4846, -573, -49, 0, 12.2704, 0, -12.2704, -631, -94, 54.7447, 5.66325, -54.7447, -5.66325, -712, -145, 0, 0, 0, 0, -809, -141, 45.306, -12.2704, -45.306, 12.2704, -866, -126, 0, 0, 0, 0, -913, -126, 45.306, 21.7091, -45.306, -21.7091, -968, -141, 0, 0, 0, 0, -997, -156, 0, 0, 0, 0, -1043, -187, 20.7652, 21.7091, -20.7652, -21.7091, -1085, -216, 0, 0, 0, 0, -1085, -216)
+}
+point_count = 19
+
+[node name="Path2D" type="Path2D"]
+position = Vector2(1163, 313)
+curve = SubResource("Curve2D_iqo13")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(1, 0)
+rotation = -3.09936
+cubic_interp = false
+loop = false
+
+[node name="!" parent="PathFollow2D" instance=ExtResource("2_vj4gx")]
+position = Vector2(0.999146, -0.0422058)
+rotation = -0.0422352
+scale = Vector2(0.4, 0.4)
+
+[node name="spawning_node" parent="PathFollow2D" instance=ExtResource("1_s66ux")]
+position = Vector2(0.999146, -0.0422058)
+rotation = 3.09936
+script = null
+
+[node name="spawn_timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true

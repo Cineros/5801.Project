@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://comb1v2ocrbqv"]
+[gd_scene load_steps=3 format=3 uid="uid://comb1v2ocrbqv"]
 
 [ext_resource type="Script" path="res://Menus/main_menu.gd" id="1_0b7mf"]
 [ext_resource type="Texture2D" uid="uid://bg18gkdhm17kt" path="res://gen_sprites/bits_byte.png" id="2_0wvt6"]
-[ext_resource type="Script" path="res://interface/interface.gd" id="2_fqlmf"]
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -14,13 +13,6 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0b7mf")
-
-[node name="Interface" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
-script = ExtResource("2_fqlmf")
 
 [node name="BitsByte" type="Sprite2D" parent="."]
 position = Vector2(1, -159)

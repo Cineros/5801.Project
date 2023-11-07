@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://omnok2vrdfpb"]
+[gd_scene load_steps=6 format=3 uid="uid://omnok2vrdfpb"]
 
 [ext_resource type="Script" path="res://Towers/4dArrow_Tower/4dArrow_Tower.gd" id="1_nkf4o"]
 [ext_resource type="Texture2D" uid="uid://dit3fcx5ubuwj" path="res://Towers/4dArrow_Tower/4dArrow.png" id="2_ea686"]
@@ -16,11 +16,35 @@ _surfaces = [{
 "vertex_data": PackedByteArray(0, 0, 0, 65, 205, 204, 172, 194, 0, 0, 0, 65, 102, 102, 167, 194, 0, 0, 216, 65, 205, 204, 102, 194, 0, 0, 216, 65, 205, 204, 72, 194, 104, 102, 182, 65, 0, 0, 56, 194, 0, 0, 96, 65, 0, 0, 56, 194, 0, 0, 96, 65, 104, 102, 110, 193, 152, 153, 149, 65, 0, 0, 48, 193, 0, 0, 64, 66, 0, 0, 48, 193, 0, 0, 64, 66, 52, 51, 211, 193, 0, 0, 100, 66, 0, 0, 240, 193, 0, 0, 100, 66, 0, 0, 216, 193, 0, 0, 172, 66, 48, 51, 227, 192, 0, 0, 172, 66, 0, 0, 192, 192, 0, 0, 176, 66, 0, 0, 144, 192, 0, 0, 176, 66, 0, 0, 0, 65, 104, 102, 102, 66, 0, 0, 232, 65, 204, 204, 72, 66, 0, 0, 232, 65, 0, 0, 52, 66, 104, 102, 190, 65, 0, 0, 52, 66, 0, 0, 128, 65, 0, 0, 36, 66, 0, 0, 128, 65, 104, 102, 110, 65, 152, 153, 113, 65, 0, 0, 48, 65, 0, 0, 144, 65, 0, 0, 48, 65, 0, 0, 64, 66, 52, 51, 203, 65, 0, 0, 64, 66, 104, 102, 230, 65, 0, 0, 104, 66, 0, 0, 208, 65, 0, 0, 104, 66, 0, 0, 192, 64, 0, 0, 172, 66, 0, 0, 160, 64, 0, 0, 172, 66, 0, 0, 96, 64, 0, 0, 176, 66, 0, 0, 0, 193, 0, 0, 176, 66, 0, 0, 224, 193, 104, 102, 102, 66, 0, 0, 224, 193, 204, 204, 68, 66, 104, 102, 190, 193, 0, 0, 52, 66, 0, 0, 112, 193, 0, 0, 52, 66, 0, 0, 112, 193, 0, 0, 112, 65, 0, 0, 64, 194, 48, 51, 67, 65, 0, 0, 64, 194, 52, 51, 219, 65, 0, 0, 100, 194, 0, 0, 248, 65, 0, 0, 100, 194, 0, 0, 224, 65, 0, 0, 176, 194, 208, 204, 204, 64, 0, 0, 176, 194, 0, 0, 176, 192, 102, 102, 102, 194, 0, 0, 208, 193, 205, 204, 72, 194, 0, 0, 208, 193, 0, 0, 56, 194, 104, 102, 174, 193, 0, 0, 56, 194, 0, 0, 80, 193, 104, 102, 130, 193, 0, 0, 80, 193, 0, 0, 112, 193, 104, 102, 86, 193, 0, 0, 112, 193, 0, 0, 96, 193, 0, 0, 48, 193, 0, 0, 136, 193, 0, 0, 48, 193, 0, 0, 64, 194, 52, 51, 211, 193, 0, 0, 64, 194, 0, 0, 240, 193, 0, 0, 100, 194, 0, 0, 216, 193, 0, 0, 100, 194, 0, 0, 160, 192, 51, 51, 175, 194, 64, 51, 83, 64, 0, 0, 176, 194)
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4hj6g"]
+radius = 132.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wd40k"]
+radius = 196.092
+
 [node name="4dArrow_Tower" type="Node2D"]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.7, 0.7)
 script = ExtResource("1_nkf4o")
 
 [node name="4dArrow" type="MeshInstance2D" parent="."]
 scale = Vector2(0.5, 0.5)
 mesh = SubResource("ArrayMesh_5xgio")
 texture = ExtResource("2_ea686")
+
+[node name="Area2D" type="Area2D" parent="4dArrow"]
+
+[node name="4darrow_hurtbox" type="CollisionPolygon2D" parent="4dArrow/Area2D"]
+polygon = PackedVector2Array(60, -48, 132, 0, 60, 48, 44, 12, -12, 12, -48, -12, -60, -52, -132, 0, -56, 52, -52, 8, -12, -12, 12, -48, 52, -52, 0, -132, -48, -52, -12, -52, 12, -12, 8, 48, 44, 56, 0, 132, -48, 56, -12, 48, 8, 12, 48, -8)
+
+[node name="damage_range" type="Area2D" parent="4dArrow"]
+
+[node name="damage_range_box" type="CollisionShape2D" parent="4dArrow/damage_range"]
+shape = SubResource("CircleShape2D_4hj6g")
+debug_color = Color(0.701961, 0.294118, 0.968627, 0.419608)
+
+[node name="enemy_detection_range" type="Area2D" parent="."]
+
+[node name="EDR_box" type="CollisionShape2D" parent="enemy_detection_range"]
+shape = SubResource("CircleShape2D_wd40k")
+
+[connection signal="area_entered" from="enemy_detection_range" to="." method="_on_enemy_detection_range_area_entered"]

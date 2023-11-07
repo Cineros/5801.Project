@@ -1,16 +1,35 @@
 #Made on 10/16/2023 By Darius Wolfe
-extends Node2D
+extends CharacterBody2D
 
-@export var DAMAGE: int = 1
-@export var SPEED: int = 800
+var DAMAGE = 1
+var SPEED = 800
+var target
+var pathName = ""
 
 func _physics_process(delta):
-	var direction = Vector2.RIGHT.rotated(rotation)
-	global_position += SPEED * direction * delta
+	var spawnNode = get_tree().get_root().get_node("res://enemy_units/spawning_node/spawning_node.tscn")
+	
+	for i in spawnNode.get_child_count():
+		if spawnNode.get_child(i).name == pathName:
+			target = spawnNode.get_child(i).get_child(0).get_child(0).global_position
+	
+	velocity = global_position.direction_to(target) * SPEED
+	
+	look_at(target)
+	
+	move_and_slide()
 
 func destroy():
 	queue_free()
 	
 
-func _on_hitbox_bolt_area_entered(area):
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
 	destroy()
+
+
+
+func _on_hurtbox_bolt_body_entered(body):
+	if "res://enemy_units/!/!.tscn" in body.name:
+		body.health -= DAMAGE
+		destroy()

@@ -11,14 +11,16 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	rotation -= delta/2
-	murderTime(delta)
 	pass
 	
 func murderTime(delta):
+	rotation -= delta * speed
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		rotation -= delta * speed
-		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-			if(speed < 50):
-				speed += 2*(speed * delta)
-	else:
-		speed = 1
+		if(speed < 50):
+			speed += 2*(speed * delta)
+		else:
+			speed = 1
+
+
+func _on_enemy_detection_range_area_entered(_area):
+	murderTime(get_process_delta_time())
