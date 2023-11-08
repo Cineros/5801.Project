@@ -20,7 +20,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray(0, 0, 0, 0, 52, 51, 169, 194, 0, 0, 0, 0, 52, 51, 165, 194, 0, 0, 160, 64, 52, 51, 151, 194, 0, 0, 160, 64, 0, 0, 120, 194, 0, 0, 96, 64, 0, 0, 120, 194, 0, 0, 192, 191, 0, 0, 44, 194, 192, 204, 76, 192, 0, 0, 44, 194, 0, 0, 176, 192, 104, 102, 34, 194, 0, 0, 0, 193, 204, 204, 38, 194, 0, 0, 0, 193, 204, 204, 44, 194, 0, 0, 48, 193, 204, 204, 56, 194, 0, 0, 48, 193, 104, 102, 70, 194, 48, 51, 131, 193, 0, 0, 154, 194, 0, 0, 96, 193, 0, 0, 154, 194, 0, 0, 16, 193, 102, 102, 167, 194, 0, 0, 16, 193, 204, 204, 172, 194)
 }]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Bolt" type="CharacterBody2D"]
 script = ExtResource("1_ye5xj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -32,20 +32,20 @@ shape = SubResource("CapsuleShape2D_ldmah")
 position = Vector2(-3, -0.5)
 scale = Vector2(1.3, 1.05)
 
-[node name="Bolt" type="MeshInstance2D" parent="."]
+[node name="bolt_body" type="MeshInstance2D" parent="."]
 position = Vector2(-44, 3.00001)
 rotation = 1.5708
 scale = Vector2(0.579439, 0.641921)
 mesh = SubResource("ArrayMesh_1q2ol")
 texture = ExtResource("2_2dy2p")
 
-[node name="hurtbox_bolt" type="Area2D" parent="Bolt"]
+[node name="hurtbox_bolt" type="Area2D" parent="bolt_body"]
 position = Vector2(-5.17771, -68.5443)
 rotation = -1.5708
 scale = Vector2(1.55782, 1.72581)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bolt/hurtbox_bolt"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="bolt_body/hurtbox_bolt"]
 position = Vector2(3.8147e-06, 0)
-polygon = PackedVector2Array(-19.0001, 4.54898e-06, -4.04892e-05, 5.99999, 6.99998, 4.99999, 13, -6.72636e-06, 6.99998, -5, -3.5805e-05, -5.99999)
+polygon = PackedVector2Array(-19.0001, 4.54898e-06, -1.00004, 6.99999, 6.99998, 6.99998, 21, -9.5452e-06, 7.99999, -6.99999, -2.00004, -6.99999)
 
-[connection signal="body_entered" from="Bolt/hurtbox_bolt" to="." method="_on_hurtbox_bolt_body_entered"]
+[connection signal="body_entered" from="bolt_body/hurtbox_bolt" to="." method="_on_hurtbox_bolt_body_entered"]

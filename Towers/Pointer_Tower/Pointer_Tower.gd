@@ -2,7 +2,7 @@
 extends StaticBody2D
 
 var level = 1
-var attack_speed = 800 * level
+var attack_speed = 8000 * level
 
 var bullet = preload("res://Towers/Pointer_Tower/bolt.tscn")
 var damage = level + 1
@@ -22,6 +22,8 @@ func _on_range_body_entered(body):
 		var tempArray = []
 		targets = get_node("range").get_overlapping_bodies()
 		
+		
+		print(targets)
 		for i in targets:
 			if "!" in i.name:
 				tempArray.append(i)
@@ -41,7 +43,7 @@ func _on_range_body_entered(body):
 		
 		var tempBullet = bullet.instantiate()
 		tempBullet.pathName = pathName
-		tempBullet.damage = damage
+		tempBullet.DAMAGE = damage
 		get_node("tempContainer").add_child(tempBullet)
 		tempBullet.global_position = get_node("Pointer/point").global_position
 

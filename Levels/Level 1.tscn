@@ -20,6 +20,7 @@ polygons = [PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 1
 script = ExtResource("4_nfyo5")
 
 [node name="spawn_timer" type="Timer" parent="spawning_node"]
+wait_time = 0.05
 autostart = true
 
 [node name="Towers" type="Node2D" parent="."]

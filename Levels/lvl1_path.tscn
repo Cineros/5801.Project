@@ -22,7 +22,6 @@ loop = false
 [node name="!" parent="PathFollow2D" instance=ExtResource("2_vj4gx")]
 position = Vector2(0.999146, -0.0422058)
 rotation = -0.0422352
-scale = Vector2(0.4, 0.4)
 
 [node name="spawning_node" parent="PathFollow2D" instance=ExtResource("1_s66ux")]
 position = Vector2(0.999146, -0.0422058)

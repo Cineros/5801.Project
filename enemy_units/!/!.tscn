@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://q27xhegbdpx8"]
+[gd_scene load_steps=5 format=3 uid="uid://q27xhegbdpx8"]
 
 [ext_resource type="Script" path="res://enemy_units/!/!.gd" id="1_ljmgf"]
 [ext_resource type="Texture2D" uid="uid://ccus0u2eji6oy" path="res://enemy_units/!/!.png" id="1_scj1y"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_st1yo"]
+radius = 3.0
+height = 28.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_8qhvj"]
 _surfaces = [{
@@ -16,17 +20,23 @@ _surfaces = [{
 "vertex_data": PackedByteArray(0, 0, 24, 65, 205, 204, 6, 194, 0, 0, 24, 65, 208, 204, 68, 65, 160, 153, 169, 64, 0, 0, 132, 65, 64, 51, 179, 63, 0, 0, 132, 65, 0, 0, 8, 193, 208, 204, 116, 65, 0, 0, 8, 193, 0, 0, 132, 193, 152, 153, 25, 193, 0, 0, 10, 194, 152, 153, 217, 192, 0, 0, 10, 194, 0, 0, 192, 191, 51, 51, 19, 194, 0, 0, 192, 191, 154, 153, 31, 194, 0, 0, 8, 65, 104, 102, 154, 65, 0, 0, 8, 65, 0, 0, 180, 65, 152, 153, 33, 65, 0, 0, 228, 65, 208, 204, 236, 64, 0, 0, 228, 65, 64, 51, 179, 63, 0, 0, 14, 66, 192, 204, 12, 192, 0, 0, 14, 66, 0, 0, 24, 193, 52, 51, 235, 65, 0, 0, 24, 193, 0, 0, 156, 65, 104, 102, 230, 192, 0, 0, 156, 65, 0, 0, 96, 192, 0, 0, 132, 65, 0, 0, 96, 192, 208, 204, 84, 65)
 }]
 
-[node name="!" type="Node2D"]
-rotation = 3.14159
-scale = Vector2(0.4, 0.4)
+[node name="!" type="CharacterBody2D"]
 script = ExtResource("1_ljmgf")
 
-[node name="!" type="MeshInstance2D" parent="."]
-position = Vector2(-2.27374e-13, -1)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_st1yo")
+
+[node name="!_hit_box" type="CollisionPolygon2D" parent="."]
+position = Vector2(-4.76837e-07, 0.533651)
+scale = Vector2(0.447917, 0.413462)
+polygon = PackedVector2Array(-4.46512, -32.7326, -3.79535, -7.8793, -4.46512, 10.8023, 2.23256, 18.0581, 4.46512, 20.4768, 4.46512, 25.314, 2.23256, 27.7326, -2.23256, 27.7326, -4.46512, 25.314, -4.46512, 22.8954, -3, 18, 4.46512, 10.8023, 4.46512, -32.7326)
+
+[node name="!_sprite" type="Node2D" parent="."]
+rotation = 3.14159
+scale = Vector2(0.4, 0.4)
+
+[node name="!_body" type="MeshInstance2D" parent="!_sprite"]
+rotation = 3.14159
 mesh = SubResource("ArrayMesh_8qhvj")
 texture = ExtResource("1_scj1y")
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-
-[node name="!_hit_box" type="CollisionPolygon2D" parent="CharacterBody2D"]
-polygon = PackedVector2Array(-5, -35, -4, 11, 4, 20, 6, 22, 6, 26, 3, 29, -2, 30, -6, 27, -6, 22, -3, 18, 5, 11, 5, -34)

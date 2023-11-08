@@ -24,14 +24,12 @@ _surfaces = [{
 [node name="pointer_tower" type="StaticBody2D"]
 script = ExtResource("1_p6kcu")
 
-[node name="tempContainer" type="Node" parent="."]
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(5, -2.5)
 shape = SubResource("RectangleShape2D_6nm0x")
 
 [node name="fire_delay" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.01
 one_shot = true
 
 [node name="range" type="Area2D" parent="."]
@@ -48,6 +46,11 @@ mesh = SubResource("ArrayMesh_syte4")
 texture = ExtResource("1_nni11")
 
 [node name="point" type="Marker2D" parent="Pointer"]
-position = Vector2(-131.685, -225.049)
+position = Vector2(-131.685, -204.168)
 rotation = -1.5708
 scale = Vector2(2.3201, 2.31024)
+
+[node name="tempContainer" type="Node" parent="."]
+
+[connection signal="body_entered" from="range" to="." method="_on_range_body_entered"]
+[connection signal="body_exited" from="range" to="." method="_on_range_body_exited"]
