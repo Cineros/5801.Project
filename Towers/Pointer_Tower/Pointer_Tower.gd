@@ -10,6 +10,8 @@ var pathName
 var targets = []
 var target
 
+signal enemy_killed()
+
 @onready var fireDelay := $fire_delay
 
 func _process(delta):
@@ -45,6 +47,7 @@ func _on_range_body_entered(body):
 		tempBullet.pathName = pathName
 		tempBullet.DAMAGE = damage
 		get_node("tempContainer").add_child(tempBullet)
+		emit_signal("enemy_killed")
 		tempBullet.global_position = get_node("Pointer/point").global_position
 
 
