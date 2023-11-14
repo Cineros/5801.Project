@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuvqsabmigps8"]
+
+[ext_resource type="Texture2D" uid="uid://bvru2wf8osw6v" path="res://gen_sprites/my_computer.png" id="1_1lpub"]
+
+[node name="My Computer" type="Sprite2D"]
+position = Vector2(100, 128)
+scale = Vector2(0.668519, 0.728)
+texture = ExtResource("1_1lpub")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-4.48756, 49.4505)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(16.4543, -1.37363, 101.717, -49.4505, 115.18, -50.8242, 116.676, -42.5824, 124.155, -42.5824, 124.155, 28.8462, 76.2881, 78.2967, -115.18, 78.2967, -122.659, 70.0549, -124.155, 54.9451, -98.7257, 35.7143, -100.222, -19.2308, -92.7424, -24.7253, -76.2881, -26.0989, -76.2881, -153.846, -52.3546, -178.571, 91.2465, -177.198, 98.7258, -170.33, 100.222, -46.7033)

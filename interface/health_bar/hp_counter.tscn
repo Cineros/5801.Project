@@ -30,4 +30,4 @@ offset_right = 7.0
 offset_bottom = 30.0
 grow_horizontal = 0
 theme = SubResource("Theme_gn1oo")
-text = "10/100"
+text = "100/100"

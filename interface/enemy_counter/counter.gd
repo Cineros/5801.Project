@@ -2,11 +2,6 @@
 extends NinePatchRect
 
 
-# update count on enemy spawn
-func _on_interface_enemy_spawned(count):
-	$Label.text = str(count) 
-
-
-# update count on enemy death
-func _on_interface_enemy_death(count):
+# update count on enemy spawn and death
+func _on_interface_enemy_changed(count):
 	$Label.text = str(count)

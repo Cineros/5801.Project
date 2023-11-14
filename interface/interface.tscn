@@ -12,10 +12,14 @@ script = ExtResource("1_otebm")
 
 [node name="Hbar" parent="." instance=ExtResource("1_q7aua")]
 layout_mode = 1
-offset_left = 16.0
-offset_top = 32.0
-offset_right = 616.0
-offset_bottom = 85.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 295.0
+offset_top = 31.0
+offset_right = 895.0
+offset_bottom = 84.0
+grow_horizontal = 2
 script = ExtResource("3_pb4ti")
 
 [node name="counter" parent="." instance=ExtResource("2_ewg0x")]
