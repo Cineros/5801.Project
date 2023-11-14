@@ -1,6 +1,8 @@
 #Made on 10/16/2023 By Darius Wolfe
 extends Node2D
 var level = 1
+var DAMAGE = 1 + level
+var durability = level * 10
 @export var SPEED: int = 2000 * level
 
 func _physics_process(delta):
@@ -14,7 +16,9 @@ func destroy():
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	destroy()
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func _on_cursor_hurtbox_body_entered(body):
+	if "!" in body.name:
+		body.health -= DAMAGE
+		durability - 1
+		if durability == 0:
+			destroy()

@@ -31,9 +31,9 @@ scale = Vector2(0.5, 0.5)
 mesh = SubResource("ArrayMesh_5xgio")
 texture = ExtResource("2_ea686")
 
-[node name="Area2D" type="Area2D" parent="4dArrow"]
+[node name="range" type="Area2D" parent="4dArrow"]
 
-[node name="4darrow_hurtbox" type="CollisionPolygon2D" parent="4dArrow/Area2D"]
+[node name="4darrow_hurtbox" type="CollisionPolygon2D" parent="4dArrow/range"]
 polygon = PackedVector2Array(60, -48, 132, 0, 60, 48, 44, 12, -12, 12, -48, -12, -60, -52, -132, 0, -56, 52, -52, 8, -12, -12, 12, -48, 52, -52, 0, -132, -48, -52, -12, -52, 12, -12, 8, 48, 44, 56, 0, 132, -48, 56, -12, 48, 8, 12, 48, -8)
 
 [node name="damage_range" type="Area2D" parent="4dArrow"]
@@ -47,4 +47,7 @@ debug_color = Color(0.701961, 0.294118, 0.968627, 0.419608)
 [node name="EDR_box" type="CollisionShape2D" parent="enemy_detection_range"]
 shape = SubResource("CircleShape2D_wd40k")
 
-[connection signal="area_entered" from="enemy_detection_range" to="." method="_on_enemy_detection_range_area_entered"]
+[connection signal="body_entered" from="4dArrow/range" to="." method="_on_range_body_entered"]
+[connection signal="body_entered" from="4dArrow/damage_range" to="." method="_on_damage_range_body_entered"]
+[connection signal="body_entered" from="enemy_detection_range" to="." method="_on_enemy_detection_range_body_entered"]
+[connection signal="body_exited" from="enemy_detection_range" to="." method="_on_enemy_detection_range_body_exited"]

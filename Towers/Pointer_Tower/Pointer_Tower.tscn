@@ -7,6 +7,7 @@
 size = Vector2(36, 29)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0nv4v"]
+radius = 7.95141
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_syte4"]
 _surfaces = [{
@@ -29,7 +30,7 @@ position = Vector2(5, -2.5)
 shape = SubResource("RectangleShape2D_6nm0x")
 
 [node name="fire_delay" type="Timer" parent="."]
-wait_time = 0.01
+wait_time = 0.75
 one_shot = true
 
 [node name="range" type="Area2D" parent="."]

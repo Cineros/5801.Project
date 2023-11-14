@@ -29,3 +29,10 @@ texture = ExtResource("2_ny6ab")
 [node name="Cursor_View_Box" type="VisibleOnScreenNotifier2D" parent="Cursor"]
 position = Vector2(9.91741, 29.4202)
 scale = Vector2(14.9802, 19.3548)
+
+[node name="cursor_hurtbox" type="Area2D" parent="."]
+
+[node name="cursor_hurtbox_body" type="CollisionPolygon2D" parent="cursor_hurtbox"]
+polygon = PackedVector2Array(39, 0, -12, -28, -26, -8, -26, 4, -15, 25)
+
+[connection signal="body_entered" from="cursor_hurtbox" to="." method="_on_cursor_hurtbox_body_entered"]

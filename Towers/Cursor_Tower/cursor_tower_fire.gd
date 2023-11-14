@@ -3,14 +3,14 @@ extends Node2D
 
 var mousePOS
 @onready var fireDelay := $fire_Delay
-@onready var cursor = get_node("Cursor")
+var cursor = preload("res://Towers/Cursor_Tower/cursor_tower.tscn")
 
 func launch(angle):
-	var cursor = load("res://Towers/Cursor_Tower/cursor_tower.tscn").instantiate()
-	get_parent().add_child(cursor)
-	cursor.global_position = get_node("midPoint").global_position
+	var tempCursor = cursor.instantiate()
+	get_parent().add_child(tempCursor)
+	tempCursor.global_position = get_node("midPoint").global_position
 	var cursor_rotation = get_node("midPoint").global_position.direction_to(get_global_mouse_position()).angle()
-	cursor.rotation = cursor_rotation
+	tempCursor.rotation = cursor_rotation
 	fireDelay.start()
 	
 
