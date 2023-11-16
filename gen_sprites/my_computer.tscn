@@ -1,14 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://cuvqsabmigps8"]
+[gd_scene load_steps=4 format=3 uid="uid://dkpvpgjrknins"]
 
-[ext_resource type="Texture2D" uid="uid://bvru2wf8osw6v" path="res://gen_sprites/my_computer.png" id="1_1lpub"]
+[ext_resource type="Script" path="res://gen_sprites/my_computer.gd" id="1_dllfk"]
+[ext_resource type="Texture2D" uid="uid://bvru2wf8osw6v" path="res://gen_sprites/my_computer.png" id="2_jt05t"]
 
-[node name="My Computer" type="Sprite2D"]
-position = Vector2(100, 128)
-scale = Vector2(0.668519, 0.728)
-texture = ExtResource("1_1lpub")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vo7f8"]
+size = Vector2(184, 156)
 
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2(-4.48756, 49.4505)
+[node name="my_computer" type="CharacterBody2D"]
+script = ExtResource("1_dllfk")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PackedVector2Array(16.4543, -1.37363, 101.717, -49.4505, 115.18, -50.8242, 116.676, -42.5824, 124.155, -42.5824, 124.155, 28.8462, 76.2881, 78.2967, -115.18, 78.2967, -122.659, 70.0549, -124.155, 54.9451, -98.7257, 35.7143, -100.222, -19.2308, -92.7424, -24.7253, -76.2881, -26.0989, -76.2881, -153.846, -52.3546, -178.571, 91.2465, -177.198, 98.7258, -170.33, 100.222, -46.7033)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(40, 78, 55, 72, 101, 40, 100, -62, 85, -70, 19, -74, -51, -48, -62, -36, -61, 44, -56, 50, -76, 70, -75, 76)
+
+[node name="computer_sprite" type="Polygon2D" parent="."]
+texture = ExtResource("2_jt05t")
+polygon = PackedVector2Array(91, -72.9, 91, -71.2, 105, -64.2, 105, 44, 102.5, 44, 55.6, 77, 52.5, 77, 40.5, 84, 39, 84, -77, 79, -77, 76.8, -80.4, 73.5, -79.3, 71, -79, 67, -76.9, 67, -71.9, 61, -69.7, 61, -59, 52.1, -59, 48.6, -65, 39.6, -65, -35.3, -63.4, -40, -61.8, -40, -48.8, -53, -45.4, -53, 14, -75.4, 14, -77.1)
+uv = PackedVector2Array(341, 177.1, 341, 178.8, 355, 185.8, 355, 294, 352.5, 294, 305.6, 327, 302.5, 327, 290.5, 334, 289, 334, 173, 329, 173, 326.8, 169.6, 323.5, 170.7, 321, 171, 317, 173.1, 317, 178.1, 311, 180.3, 311, 191, 302.1, 191, 298.6, 185, 289.6, 185, 214.7, 186.6, 210, 188.2, 210, 201.2, 197, 204.6, 197, 264, 174.6, 264, 172.9)
+polygons = [PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26)]
+
+[node name="computer_hitbox" type="Area2D" parent="."]
+
+[node name="hitbox_shape" type="CollisionShape2D" parent="computer_hitbox"]
+position = Vector2(15, 5)
+shape = SubResource("RectangleShape2D_vo7f8")
+
+[connection signal="body_entered" from="computer_hitbox" to="." method="_on_computer_hitbox_body_entered"]

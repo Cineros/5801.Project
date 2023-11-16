@@ -3,5 +3,4 @@ extends HBoxContainer
 
 
 func _on_interface_health_changed(health):
-	$counter/Label.text = str(health) + "/100"
-	$TextureProgressBar.value = health
+	pass # Replace with function body.

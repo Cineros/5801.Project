@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bag3w485d8r55"]
+
+[ext_resource type="Theme" uid="uid://qui78cpseji7" path="res://interface/enemy_counter/counter_theme.tres" id="1_dhph6"]
+
+[node name="hp_count" type="Label"]
+offset_right = 69.0
+offset_bottom = 60.0
+theme = ExtResource("1_dhph6")
+text = "100"

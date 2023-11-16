@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://c56rglg4m40w"]
+
+[ext_resource type="PackedScene" uid="uid://yy4qrx6lcmxg" path="res://enemy_units/spawning_node/spawning_node.tscn" id="3_aslnr"]
+[ext_resource type="Script" path="res://Levels/path_spawn.gd" id="4_nfyo5"]
+[ext_resource type="PackedScene" uid="uid://dkpvpgjrknins" path="res://gen_sprites/my_computer.tscn" id="5_ejrbe"]
+[ext_resource type="PackedScene" uid="uid://dvunn78ymdqmt" path="res://Towers/Cursor_Tower/cursor_platform_anim.tscn" id="5_oyhnf"]
+[ext_resource type="PackedScene" uid="uid://c70rkrengytjx" path="res://Towers/Pointer_Tower/Pointer_Tower.tscn" id="6_ysu7i"]
+[ext_resource type="PackedScene" uid="uid://omnok2vrdfpb" path="res://Towers/4dArrow_Tower/4d_arrow_tower.tscn" id="7_rm550"]
+[ext_resource type="PackedScene" uid="uid://cwimywvr3ay2" path="res://interface/health_bar/hbar.tscn" id="7_t2clk"]
+[ext_resource type="PackedScene" uid="uid://1wopaa4mknys" path="res://interface/health_bar/hp_counter.tscn" id="8_ymsu6"]
+
+[node name="Level 1" type="Node2D"]
+
+[node name="spawning_node" parent="." instance=ExtResource("3_aslnr")]
+script = ExtResource("4_nfyo5")
+
+[node name="spawn_timer" type="Timer" parent="spawning_node"]
+wait_time = 0.5
+autostart = true
+
+[node name="Towers" type="Node2D" parent="."]
+
+[node name="4dArrow_Tower" parent="Towers" instance=ExtResource("7_rm550")]
+position = Vector2(343, 158)
+
+[node name="Cursor_Platform" parent="." instance=ExtResource("5_oyhnf")]
+position = Vector2(88, 333)
+
+[node name="my_computer" parent="." instance=ExtResource("5_ejrbe")]
+position = Vector2(78, 70)
+
+[node name="pointer_tower" parent="." instance=ExtResource("6_ysu7i")]
+position = Vector2(497, 367)
+
+[node name="Hbar" parent="." instance=ExtResource("7_t2clk")]
+offset_left = 759.0
+offset_top = 3.0
+offset_right = 1155.0
+offset_bottom = 56.0
+
+[node name="counter" parent="." instance=ExtResource("8_ymsu6")]
+offset_left = 549.0
+offset_top = 4.0
+offset_right = 761.0
+offset_bottom = 56.0
+
+[connection signal="timeout" from="spawning_node/spawn_timer" to="spawning_node" method="_on_spawn_timer_timeout"]

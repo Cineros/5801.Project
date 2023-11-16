@@ -1,11 +1,17 @@
-# Made on 11/08/23 by Petros Atsas
-extends Sprite2D
+#Written by Darius Wolfe on 11/15/2023
+extends CharacterBody2D
 
+var comp_health: int = 100
+@onready var hbar = $"../Hbar"
+@onready var hp_count = $"../hp_count"
 
-signal health_changed(health)
-
-@onready var health = 100;
-
-func _on_area_2d_area_entered(area):
-	health -= 2
-	emit_signal("health_changed", health) 
+func _on_computer_hitbox_body_entered(body):
+	if "!" in body.name:
+		comp_health -= body.health
+		body.health = 0
+		#Working to get interface to function properly with data.
+		hbar.value = comp_health
+		hp_count.text = str(comp_health)
+		if comp_health == 0:
+			pass
+		print(comp_health)
