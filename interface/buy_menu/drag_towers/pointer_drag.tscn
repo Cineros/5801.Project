@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://caim64g6kx52a"]
+
+[ext_resource type="Script" path="res://interface/buy_menu/drag_towers/pointer_drag.gd" id="1_mvynh"]
+[ext_resource type="PackedScene" uid="uid://c70rkrengytjx" path="res://Towers/Pointer_Tower/Pointer_Tower.tscn" id="1_ruxgi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_akcvv"]
+radius = 25.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gkg40"]
+radius = 25.0
+
+[node name="pointer_drag" type="Node2D"]
+script = ExtResource("1_mvynh")
+
+[node name="pointer_tower" parent="." instance=ExtResource("1_ruxgi")]
+
+[node name="CollisionShape2D" parent="pointer_tower" index="0"]
+visible = false
+
+[node name="range" parent="pointer_tower" index="2"]
+visible = false
+
+[node name="dragable_body" type="Area2D" parent="pointer_tower"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="pointer_tower/dragable_body"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pointer_tower/dragable_body/CharacterBody2D"]
+position = Vector2(4, -2)
+shape = SubResource("CircleShape2D_akcvv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pointer_tower/dragable_body"]
+position = Vector2(4, -2)
+shape = SubResource("CircleShape2D_gkg40")
+
+[connection signal="input_event" from="pointer_tower/dragable_body" to="." method="_on_dragable_body_input_event"]
+
+[editable path="pointer_tower"]
