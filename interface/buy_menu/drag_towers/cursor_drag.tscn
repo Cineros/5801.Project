@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2u6hk2o8p4l3"]
+
+[ext_resource type="Script" path="res://interface/buy_menu/drag_towers/cursor_drag.gd" id="1_xlotd"]
+[ext_resource type="PackedScene" uid="uid://debxlvrb6iaxf" path="res://Towers/Cursor_Tower/cursor_tower.tscn" id="2_iwao2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_owd2c"]
+radius = 33.0
+
+[node name="cursor_drag" type="Node2D"]
+script = ExtResource("1_xlotd")
+
+[node name="Cursor_Tower_Proj" parent="." instance=ExtResource("2_iwao2")]
+
+[node name="Cursor_View_Box" parent="Cursor_Tower_Proj/Cursor" index="0"]
+visible = false
+
+[node name="cursor_hurtbox" parent="Cursor_Tower_Proj" index="1"]
+visible = false
+
+[node name="cursor_hurtbox_body" parent="Cursor_Tower_Proj/cursor_hurtbox" index="0"]
+visible = false
+
+[node name="drag_body" type="Area2D" parent="Cursor_Tower_Proj"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cursor_Tower_Proj/drag_body"]
+shape = SubResource("CircleShape2D_owd2c")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Cursor_Tower_Proj/drag_body"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Cursor_Tower_Proj/drag_body/CharacterBody2D"]
+shape = SubResource("CircleShape2D_owd2c")
+
+[connection signal="input_event" from="Cursor_Tower_Proj/drag_body" to="." method="_on_drag_body_input_event"]
+
+[editable path="Cursor_Tower_Proj"]

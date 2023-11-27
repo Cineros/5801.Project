@@ -1,0 +1,79 @@
+[gd_scene load_steps=8 format=3 uid="uid://bmqj46uvenr0d"]
+
+[ext_resource type="Texture2D" uid="uid://bfv8lddcuhilv" path="res://interface/buy_menu/Pointer_copy.png" id="1_gsgkq"]
+[ext_resource type="Script" path="res://interface/buy_menu/pointer_button.gd" id="2_y44ts"]
+[ext_resource type="Texture2D" uid="uid://dit3fcx5ubuwj" path="res://Towers/4dArrow_Tower/4dArrow.png" id="3_2x7rd"]
+[ext_resource type="Script" path="res://interface/buy_menu/4dArrow_button.gd" id="4_8k8l2"]
+[ext_resource type="Texture2D" uid="uid://dihhoqlayg742" path="res://Towers/Cursor_Tower/CLP_Anim_Frames/Cursor.png" id="4_8mucg"]
+[ext_resource type="Script" path="res://interface/buy_menu/cursor_button.gd" id="6_5hwdd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l6hef"]
+size = Vector2(40, 40)
+
+[node name="buy_grid" type="GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 0
+
+[node name="pointer_button" type="Button" parent="."]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+action_mode = 0
+icon = ExtResource("1_gsgkq")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("2_y44ts")
+
+[node name="Area2D" type="Area2D" parent="pointer_button"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pointer_button/Area2D"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_l6hef")
+
+[node name="4dArrow_button" type="Button" parent="."]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+action_mode = 0
+icon = ExtResource("3_2x7rd")
+expand_icon = true
+script = ExtResource("4_8k8l2")
+
+[node name="Area2D2" type="Area2D" parent="4dArrow_button"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="4dArrow_button/Area2D2"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_l6hef")
+
+[node name="cursor_button" type="Button" parent="."]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+action_mode = 0
+icon = ExtResource("4_8mucg")
+expand_icon = true
+script = ExtResource("6_5hwdd")
+
+[node name="Area2D3" type="Area2D" parent="cursor_button"]
+position = Vector2(1, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cursor_button/Area2D3"]
+position = Vector2(19, 20)
+shape = SubResource("RectangleShape2D_l6hef")
+
+[connection signal="pressed" from="pointer_button" to="pointer_button" method="_on_pressed"]
+[connection signal="body_entered" from="pointer_button/Area2D" to="pointer_button" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="pointer_button/Area2D" to="pointer_button" method="_on_area_2d_body_exited"]
+[connection signal="pressed" from="4dArrow_button" to="4dArrow_button" method="_on_pressed"]
+[connection signal="body_entered" from="4dArrow_button/Area2D2" to="4dArrow_button" method="_on_area_2d_2_body_entered"]
+[connection signal="body_exited" from="4dArrow_button/Area2D2" to="4dArrow_button" method="_on_area_2d_2_body_exited"]
+[connection signal="pressed" from="cursor_button" to="cursor_button" method="_on_pressed"]
+[connection signal="body_entered" from="cursor_button/Area2D3" to="cursor_button" method="_on_area_2d_3_body_entered"]
+[connection signal="body_exited" from="cursor_button/Area2D3" to="cursor_button" method="_on_area_2d_3_body_exited"]

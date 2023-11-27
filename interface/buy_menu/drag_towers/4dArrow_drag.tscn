@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://dn3pxn2c5ojuw"]
+
+[ext_resource type="Script" path="res://interface/buy_menu/drag_towers/4dArrow_drag.gd" id="1_8ipqr"]
+[ext_resource type="PackedScene" uid="uid://omnok2vrdfpb" path="res://Towers/4dArrow_Tower/4d_arrow_tower.tscn" id="2_huvm1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q5mun"]
+radius = 45.0
+
+[node name="4dArrow_drag" type="Node2D"]
+script = ExtResource("1_8ipqr")
+
+[node name="4dArrow_Tower" parent="." instance=ExtResource("2_huvm1")]
+
+[node name="range" parent="4dArrow_Tower/4dArrow" index="0"]
+visible = false
+
+[node name="damage_range" parent="4dArrow_Tower/4dArrow" index="1"]
+visible = false
+
+[node name="enemy_detection_range" parent="4dArrow_Tower" index="1"]
+visible = false
+
+[node name="Body" type="Area2D" parent="4dArrow_Tower"]
+
+[node name="DragableBody" type="CollisionShape2D" parent="4dArrow_Tower/Body"]
+shape = SubResource("CircleShape2D_q5mun")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="4dArrow_Tower/Body"]
+
+[node name="DragableBody2" type="CollisionShape2D" parent="4dArrow_Tower/Body/CharacterBody2D"]
+scale = Vector2(1, 1)
+shape = SubResource("CircleShape2D_q5mun")
+
+[connection signal="input_event" from="4dArrow_Tower/Body" to="." method="_on_body_input_event"]
+
+[editable path="4dArrow_Tower"]
