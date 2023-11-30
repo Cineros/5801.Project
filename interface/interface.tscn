@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgu60eus3wlk4"]
+[gd_scene load_steps=6 format=3 uid="uid://bgu60eus3wlk4"]
 
 [ext_resource type="Script" path="res://interface/interface.gd" id="1_otebm"]
 [ext_resource type="PackedScene" uid="uid://cwimywvr3ay2" path="res://interface/health_bar/hbar.tscn" id="1_q7aua"]
 [ext_resource type="PackedScene" uid="uid://c7j7fkqdjff2" path="res://interface/enemy_counter/counter.tscn" id="2_ewg0x"]
 [ext_resource type="PackedScene" uid="uid://bmqj46uvenr0d" path="res://interface/buy_menu/tower_grid.tscn" id="4_n4m2v"]
+[ext_resource type="PackedScene" uid="uid://dst2oojr6y3gs" path="res://interface/buy_menu/money_counter/money_counter.tscn" id="5_fsr74"]
 
 [node name="Interface" type="Control"]
 layout_mode = 3
@@ -26,10 +27,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 1040.0
-offset_top = 17.0
-offset_right = 1133.0
-offset_bottom = 105.0
+offset_left = 1044.0
+offset_top = 192.0
+offset_right = 1137.0
+offset_bottom = 280.0
 grow_horizontal = 0
 
 [node name="buy_grid" parent="." instance=ExtResource("4_n4m2v")]
@@ -46,7 +47,19 @@ offset_bottom = 646.0
 grow_horizontal = 1
 grow_vertical = 0
 
+[node name="money_counter" parent="." instance=ExtResource("5_fsr74")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 101.0
+offset_top = 558.0
+offset_right = 268.0
+offset_bottom = 646.0
+grow_vertical = 0
+
 [connection signal="health_changed" from="." to="Hbar" method="_on_interface_health_changed"]
 
 [editable path="Hbar"]
 [editable path="Hbar/counter"]
+[editable path="buy_grid"]

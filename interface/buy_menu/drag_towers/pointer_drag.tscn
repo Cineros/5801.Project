@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://caim64g6kx52a"]
+[gd_scene load_steps=7 format=3 uid="uid://caim64g6kx52a"]
 
 [ext_resource type="Script" path="res://interface/buy_menu/drag_towers/pointer_drag.gd" id="1_mvynh"]
 [ext_resource type="PackedScene" uid="uid://c70rkrengytjx" path="res://Towers/Pointer_Tower/Pointer_Tower.tscn" id="1_ruxgi"]
+[ext_resource type="PackedScene" uid="uid://d2q0rvp1t606o" path="res://interface/buy_menu/drag_towers/place_menu.tscn" id="3_mkuvx"]
+[ext_resource type="Script" path="res://interface/buy_menu/drag_towers/pointer_menu.gd" id="4_y57sp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_akcvv"]
 radius = 25.0
@@ -13,12 +15,6 @@ radius = 25.0
 script = ExtResource("1_mvynh")
 
 [node name="pointer_tower" parent="." instance=ExtResource("1_ruxgi")]
-
-[node name="CollisionShape2D" parent="pointer_tower" index="0"]
-visible = false
-
-[node name="range" parent="pointer_tower" index="2"]
-visible = false
 
 [node name="dragable_body" type="Area2D" parent="pointer_tower"]
 
@@ -32,6 +28,13 @@ shape = SubResource("CircleShape2D_akcvv")
 position = Vector2(4, -2)
 shape = SubResource("CircleShape2D_gkg40")
 
+[node name="place_menu" parent="." instance=ExtResource("3_mkuvx")]
+script = ExtResource("4_y57sp")
+
+[connection signal="pop" from="." to="place_menu" method="_on_pointer_drag_pop"]
 [connection signal="input_event" from="pointer_tower/dragable_body" to="." method="_on_dragable_body_input_event"]
+[connection signal="id_pressed" from="place_menu" to="place_menu" method="_on_id_pressed"]
+[connection signal="tower_placed" from="place_menu" to="." method="_on_place_menu_tower_placed"]
+[connection signal="tower_sold" from="place_menu" to="." method="_on_place_menu_tower_sold"]
 
 [editable path="pointer_tower"]

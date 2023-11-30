@@ -2,14 +2,19 @@
 extends Node2D
 
 var selected =  false
+var p = false
+
+signal pop()
 
 func _on_dragable_body_input_event(viewport, event, shape_idx):
 	if Input.is_action_just_pressed("left_click"):
 		selected = true
+	if Input.is_action_just_pressed("right_click"):
+		emit_signal("pop")
 
 
 func _physics_process(delta):
-	if selected:
+	if selected and not p:
 		global_position = lerp(global_position, get_global_mouse_position(), 25 * delta)
 
 func _input(event):
@@ -18,4 +23,9 @@ func _input(event):
 			selected = false
 
 
+func _on_place_menu_tower_placed(placed):
+	p = placed
 
+
+func _on_place_menu_tower_sold():
+	pass # Replace with function body.

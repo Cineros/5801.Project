@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dn3pxn2c5ojuw"]
+[gd_scene load_steps=6 format=3 uid="uid://dn3pxn2c5ojuw"]
 
 [ext_resource type="Script" path="res://interface/buy_menu/drag_towers/4dArrow_drag.gd" id="1_8ipqr"]
 [ext_resource type="PackedScene" uid="uid://omnok2vrdfpb" path="res://Towers/4dArrow_Tower/4d_arrow_tower.tscn" id="2_huvm1"]
+[ext_resource type="PackedScene" uid="uid://d2q0rvp1t606o" path="res://interface/buy_menu/drag_towers/place_menu.tscn" id="3_4r12r"]
+[ext_resource type="Script" path="res://interface/buy_menu/drag_towers/4d_menu.gd" id="4_tmtlu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q5mun"]
 radius = 45.0
@@ -11,15 +13,6 @@ script = ExtResource("1_8ipqr")
 
 [node name="4dArrow_Tower" parent="." instance=ExtResource("2_huvm1")]
 
-[node name="range" parent="4dArrow_Tower/4dArrow" index="0"]
-visible = false
-
-[node name="damage_range" parent="4dArrow_Tower/4dArrow" index="1"]
-visible = false
-
-[node name="enemy_detection_range" parent="4dArrow_Tower" index="1"]
-visible = false
-
 [node name="Body" type="Area2D" parent="4dArrow_Tower"]
 
 [node name="DragableBody" type="CollisionShape2D" parent="4dArrow_Tower/Body"]
@@ -28,9 +21,16 @@ shape = SubResource("CircleShape2D_q5mun")
 [node name="CharacterBody2D" type="CharacterBody2D" parent="4dArrow_Tower/Body"]
 
 [node name="DragableBody2" type="CollisionShape2D" parent="4dArrow_Tower/Body/CharacterBody2D"]
-scale = Vector2(1, 1)
 shape = SubResource("CircleShape2D_q5mun")
 
+[node name="place_menu" parent="." instance=ExtResource("3_4r12r")]
+hide_on_item_selection = false
+script = ExtResource("4_tmtlu")
+
+[connection signal="pop" from="." to="place_menu" method="_on_d_arrow_drag_pop"]
 [connection signal="input_event" from="4dArrow_Tower/Body" to="." method="_on_body_input_event"]
+[connection signal="id_pressed" from="place_menu" to="place_menu" method="_on_id_pressed"]
+[connection signal="tower_placed" from="place_menu" to="." method="_on_place_menu_tower_placed"]
+[connection signal="tower_sold" from="place_menu" to="." method="_on_place_menu_tower_sold"]
 
 [editable path="4dArrow_Tower"]
