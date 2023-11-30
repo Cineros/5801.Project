@@ -27,4 +27,4 @@ func _on_place_menu_tower_placed(placed):
 
 
 func _on_place_menu_tower_sold():
-	pass # Replace with function body.
+	queue_free()
