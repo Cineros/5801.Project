@@ -36,7 +36,7 @@ offset_bottom = 62.0
 [node name="Towers" type="Node2D" parent="."]
 
 [node name="pointer_tower" parent="Towers" instance=ExtResource("6_ysu7i")]
-position = Vector2(457, 562)
+position = Vector2(280, 602)
 
 [node name="Cursor_Platform" parent="Towers" instance=ExtResource("5_oyhnf")]
 position = Vector2(88, 333)

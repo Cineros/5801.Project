@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Enemies/Enemy0.gd" id="1_qyphn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bp17k"]
-size = Vector2(20, 42)
+size = Vector2(34, 69.5)
 
 [node name="Enemy 0" type="CharacterBody2D"]
 script = ExtResource("1_qyphn")
@@ -15,5 +15,5 @@ texture = ExtResource("1_bge37")
 offset = Vector2(348, 30)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
+position = Vector2(0, -1.25)
 shape = SubResource("RectangleShape2D_bp17k")
