@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://comb1v2ocrbqv"]
+[gd_scene load_steps=4 format=3 uid="uid://comb1v2ocrbqv"]
 
 [ext_resource type="Script" path="res://Menus/main_menu.gd" id="1_0b7mf"]
 [ext_resource type="Texture2D" uid="uid://bg18gkdhm17kt" path="res://gen_sprites/bits_byte.png" id="2_0wvt6"]
+[ext_resource type="Theme" uid="uid://qui78cpseji7" path="res://interface/enemy_counter/counter_theme.tres" id="3_mlduu"]
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -34,14 +35,17 @@ grow_vertical = 2
 
 [node name="start_button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_mlduu")
 text = "Start"
 
 [node name="options_button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_mlduu")
 text = "Options"
 
 [node name="quit_button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_mlduu")
 text = "Quit"
 
 [connection signal="pressed" from="VBoxContainer/start_button" to="." method="_on_start_button_pressed"]

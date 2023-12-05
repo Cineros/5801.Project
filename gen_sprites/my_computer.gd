@@ -6,7 +6,7 @@ var comp_health: int = 100
 @onready var hp_count = $"../hp_count"
 
 func _on_computer_hitbox_body_entered(body):
-	if "!" in body.name:
+	if "Enemy" in body.name:
 		comp_health -= body.health
 		body.health = 0
 		#Working to get interface to function properly with data.

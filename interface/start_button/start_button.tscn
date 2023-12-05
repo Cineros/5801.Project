@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://cj2a7aykn6l6n"]
+
+[ext_resource type="Script" path="res://interface/start_button/start_button.gd" id="1_mnb8c"]
+
+[node name="start_button" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+script = ExtResource("1_mnb8c")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ready_button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "READY"
+
+[connection signal="pressed" from="VBoxContainer/ready_button" to="." method="_on_ready_button_pressed"]

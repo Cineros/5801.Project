@@ -7,7 +7,7 @@ var target
 var pathName = ""
 
 func _physics_process(delta):
-	var spawnNode = get_tree().get_root().get_node("Level 1/spawning_node")
+	var spawnNode = get_tree().get_root().get_node(".../PathSpawner")
 	
 	for i in spawnNode.get_child_count():
 		if spawnNode.get_child(i).name == pathName:
@@ -30,6 +30,6 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 
 
 func _on_hurtbox_bolt_body_entered(body):
-	if "!" in body.name:
+	if "Enemy" in body.name:
 		body.health -= DAMAGE
 		destroy()
