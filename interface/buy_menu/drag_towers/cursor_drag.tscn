@@ -1,11 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://c2u6hk2o8p4l3"]
 
 [ext_resource type="Script" path="res://interface/buy_menu/drag_towers/cursor_drag.gd" id="1_xlotd"]
-[ext_resource type="PackedScene" uid="uid://debxlvrb6iaxf" path="res://Towers/Cursor_Tower/cursor_tower.tscn" id="2_iwao2"]
 [ext_resource type="PackedScene" uid="uid://d2q0rvp1t606o" path="res://interface/buy_menu/drag_towers/place_menu.tscn" id="3_6jdu7"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_owd2c"]
-radius = 33.0
+[ext_resource type="PackedScene" uid="uid://dvunn78ymdqmt" path="res://Towers/Cursor_Tower/cursor_platform_anim.tscn" id="3_d4322"]
 
 [sub_resource type="GDScript" id="GDScript_4hbm0"]
 script/source = "# Made on 11/29/23 by Petros Atsas
@@ -31,28 +28,29 @@ func _on_cursor_drag_pop():
 	popup()
 "
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_owd2c"]
+radius = 33.0
+
 [node name="cursor_drag" type="Node2D"]
 script = ExtResource("1_xlotd")
-
-[node name="Cursor_Tower_Proj" parent="." instance=ExtResource("2_iwao2")]
-
-[node name="drag_body" type="Area2D" parent="Cursor_Tower_Proj"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cursor_Tower_Proj/drag_body"]
-shape = SubResource("CircleShape2D_owd2c")
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Cursor_Tower_Proj/drag_body"]
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Cursor_Tower_Proj/drag_body/CharacterBody2D"]
-shape = SubResource("CircleShape2D_owd2c")
 
 [node name="place_menu" parent="." instance=ExtResource("3_6jdu7")]
 script = SubResource("GDScript_4hbm0")
 
+[node name="Cursor_Platform" parent="." instance=ExtResource("3_d4322")]
+
+[node name="drag_body" type="Area2D" parent="Cursor_Platform"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cursor_Platform/drag_body"]
+shape = SubResource("CircleShape2D_owd2c")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Cursor_Platform/drag_body"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Cursor_Platform/drag_body/CharacterBody2D"]
+shape = SubResource("CircleShape2D_owd2c")
+
 [connection signal="pop" from="." to="place_menu" method="_on_cursor_drag_pop"]
-[connection signal="input_event" from="Cursor_Tower_Proj/drag_body" to="." method="_on_drag_body_input_event"]
 [connection signal="id_pressed" from="place_menu" to="place_menu" method="_on_id_pressed"]
 [connection signal="tower_placed" from="place_menu" to="." method="_on_place_menu_tower_placed"]
 [connection signal="tower_sold" from="place_menu" to="." method="_on_place_menu_tower_sold"]
-
-[editable path="Cursor_Tower_Proj"]
+[connection signal="input_event" from="Cursor_Platform/drag_body" to="." method="_on_drag_body_input_event"]

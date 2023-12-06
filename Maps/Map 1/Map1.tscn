@@ -1,11 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://utcdo3xqkr0s"]
+[gd_scene load_steps=5 format=3 uid="uid://utcdo3xqkr0s"]
 
 [ext_resource type="PackedScene" uid="uid://dq1wltr4x4pn4" path="res://Tiles/tile_map.tscn" id="1_l6s48"]
 [ext_resource type="Script" path="res://Maps/Map 1/PathSpawner1.gd" id="2_kcbdl"]
-[ext_resource type="PackedScene" uid="uid://cwimywvr3ay2" path="res://interface/health_bar/hbar.tscn" id="4_lljkq"]
-[ext_resource type="PackedScene" uid="uid://bmqj46uvenr0d" path="res://interface/buy_menu/tower_grid.tscn" id="5_g0afs"]
-[ext_resource type="PackedScene" uid="uid://cj2a7aykn6l6n" path="res://interface/start_button/start_button.tscn" id="6_8rlgp"]
-[ext_resource type="PackedScene" uid="uid://bpucj61t6rawa" path="res://interface/round_counter/round_counter.tscn" id="7_hotlm"]
+[ext_resource type="PackedScene" uid="uid://bgu60eus3wlk4" path="res://interface/interface.tscn" id="4_0vvyt"]
 [ext_resource type="PackedScene" uid="uid://dkpvpgjrknins" path="res://gen_sprites/my_computer.tscn" id="7_oc8v2"]
 
 [node name="Map 1" type="Node2D"]
@@ -26,34 +23,17 @@ script = ExtResource("2_kcbdl")
 
 [node name="Towers" type="Node2D" parent="."]
 
-[node name="buy_grid" parent="Towers" instance=ExtResource("5_g0afs")]
-offset_left = 70.0
-offset_top = 538.0
-offset_right = 110.0
-offset_bottom = 666.0
-scale = Vector2(4, 4)
-
-[node name="Hbar" parent="." instance=ExtResource("4_lljkq")]
-offset_left = 1413.0
-offset_top = 70.0
-offset_right = 2013.0
-offset_bottom = 123.0
-scale = Vector2(1.8, 1.8)
-
-[node name="start_button" parent="." instance=ExtResource("6_8rlgp")]
-offset_left = 1200.0
-offset_top = 700.0
-offset_right = 1200.0
-offset_bottom = 700.0
-
-[node name="round_counter" parent="." instance=ExtResource("7_hotlm")]
-offset_left = 273.0
-offset_top = 68.0
-offset_right = 313.0
-offset_bottom = 94.0
-
 [node name="my_computer" parent="." instance=ExtResource("7_oc8v2")]
 position = Vector2(244, 326)
 scale = Vector2(2, 2)
 
+[node name="Interface" parent="." instance=ExtResource("4_0vvyt")]
+offset_left = 65.0
+offset_top = 60.0
+offset_right = 65.0
+offset_bottom = 60.0
+scale = Vector2(2.2, 2.18)
+
 [connection signal="timeout" from="PathSpawner/Timer" to="PathSpawner" method="_on_timer_timeout"]
+[connection signal="hp_damage" from="my_computer" to="Interface" method="_on_my_computer_hp_damage"]
+[connection signal="start_round" from="Interface" to="PathSpawner" method="_on_interface_start_round"]
