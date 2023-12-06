@@ -1,7 +1,7 @@
 #Made By Hunter Flati
 extends CharacterBody2D
 
-@export var speed = 100
+@export var speed = 400
 @export var health = 1
 
 func _process(delta):

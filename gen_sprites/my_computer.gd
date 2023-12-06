@@ -13,4 +13,4 @@ func _on_computer_hitbox_body_entered(body):
 		emit_signal("hp_damage", comp_health)
 		if comp_health == 0:
 			pass
-		print(comp_health)
+		#print(comp_health)
