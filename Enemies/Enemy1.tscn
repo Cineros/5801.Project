@@ -8,6 +8,7 @@ size = Vector2(28, 135)
 
 [node name="Enemy1" type="CharacterBody2D"]
 position = Vector2(0, -1)
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_qgqit")
 
 [node name="1" type="Sprite2D" parent="."]
