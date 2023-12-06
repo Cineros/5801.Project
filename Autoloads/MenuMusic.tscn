@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ca87bpqaidgb4"]
+
+[ext_resource type="AudioStream" uid="uid://bnh4yoqni50me" path="res://Audio/Voxel Revolution.mp3" id="1_rimqm"]
+
+[node name="MenuMusic" type="AudioStreamPlayer"]
+stream = ExtResource("1_rimqm")
+volume_db = -20.0
+autoplay = true

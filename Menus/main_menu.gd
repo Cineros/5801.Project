@@ -26,7 +26,7 @@ func _process(delta):
 func _on_start_button_pressed():
 	var load_level_select = lSelect.instantiate()
 	get_parent().add_child(load_level_select)
-	get_tree().change_scene_to_file("res://Menus/Level_Select.tscn")
+	get_tree().change_scene_to_file("res://Menus/MapSelectScreen.tscn")
 
 
 func _on_quit_button_pressed():
@@ -35,3 +35,4 @@ func _on_quit_button_pressed():
 
 #func _on_options_button_pressed():
 #	pass # Replace with function body.
+
