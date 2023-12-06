@@ -22,51 +22,45 @@ func _on_timer_timeout():
 	#var enemy0 = enemy_scene0.instantiate()
 	#var enemy1 = enemy_scene1.instantiate()
 	if temp_tik > 0 or counter < 8:
-		if (temp_tik % 2 == 0 and temp_tik >= 256) or temp_tik >= 256:
-			emit_signal("set_health", 256)
-			temp_tik -= 256
-		else:
-			add_child(tempPath)
-			#temp_tik - 0
-		if (temp_tik % 2 == 0 and temp_tik >= 128) or temp_tik >= 128:
+		if (temp_tik % 2 == 0 and temp_tik >= 128) or temp_tik >= 128 and counter == 0:
 			emit_signal("set_health", 128)
 			temp_tik -= 128
 		else:
 			add_child(tempPath)
 			#temp_tik - 0
-		if (temp_tik % 2 == 0 and temp_tik >= 64) or temp_tik >= 64:
+		if (temp_tik % 2 == 0 and temp_tik >= 64) or temp_tik >= 64 and counter == 1:
 			emit_signal("set_health", 64)
 			temp_tik -= 64
 		else:
 			add_child(tempPath)
 			#temp_tik - 0
-		if (temp_tik % 2 == 0 and temp_tik >= 32) or temp_tik >= 32:
+		if (temp_tik % 2 == 0 and temp_tik >= 32) or temp_tik >= 32 and counter == 2:
 			emit_signal("set_health", 32)
 			temp_tik -= 32
 		else:
 			add_child(tempPath)
 			#temp_tik - 0
-		if (temp_tik % 2 == 0 and temp_tik >= 16) or temp_tik >= 16:
+		if (temp_tik % 2 == 0 and temp_tik >= 16) or temp_tik >= 16 and counter == 3:
 			emit_signal("set_health", 16)
 			temp_tik -= 16
 		else:
 			add_child(tempPath)
 			#temp_tik - 0
-		if (temp_tik % 2 == 0 and temp_tik >= 8) or temp_tik >= 8:
+		if (temp_tik % 2 == 0 and temp_tik >= 8) or temp_tik >= 8 and counter == 4:
 			emit_signal("set_health", 8)
 			temp_tik -= 8
 			print(temp_tik)
 		else:
 			add_child(tempPath)
 			#temp_tik - 0
-		if (temp_tik % 2 == 0 and temp_tik >= 4) or temp_tik >= 4:
+		if (temp_tik % 2 == 0 and temp_tik >= 4) or temp_tik >= 4 and counter == 5:
 			emit_signal("set_health", 4)
 			temp_tik -= 4
 			print(temp_tik)
 		else:
 			add_child(tempPath)
 			#temp_tik - 0
-		if (temp_tik % 2 == 0 and temp_tik >= 2) or temp_tik >= 2:
+		if (temp_tik % 2 == 0 and temp_tik >= 2) or temp_tik >= 2 and counter == 6:
 			emit_signal("set_health", 2)
 			temp_tik -= 2
 		else:
