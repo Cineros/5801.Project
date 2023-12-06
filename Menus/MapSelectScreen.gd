@@ -28,4 +28,3 @@ func create_map_button(map_path: String, map_name: String):
 	#button.text = map_name.trim_suffix('.tscn').replace('_', ' ')
 	button.map_path = map_path
 	grid.add_child(button)
-
