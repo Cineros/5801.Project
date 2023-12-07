@@ -1,6 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://oxqg6ue0s8ib"]
+[gd_scene load_steps=11 format=3 uid="uid://oxqg6ue0s8ib"]
 
 [ext_resource type="Script" path="res://Menus/MapSelectScreen.gd" id="1_dfdoj"]
+[ext_resource type="Script" path="res://Menus/MapButton.gd" id="2_7rjrs"]
+[ext_resource type="PackedScene" uid="uid://despybye7x48q" path="res://Menus/BackButton.tscn" id="2_08wrd"]
+[ext_resource type="PackedScene" uid="uid://boqpxo1diy8sm" path="res://Menus/Map1Button.tscn" id="3_c4f8g"]
+[ext_resource type="PackedScene" uid="uid://dcoglrpgln8bu" path="res://Menus/Map2Button.tscn" id="4_l52eh"]
+[ext_resource type="PackedScene" uid="uid://ba7yagenq2m3p" path="res://Menus/Map3Button.tscn" id="5_88xgx"]
+[ext_resource type="PackedScene" uid="uid://2ugwwbjv0mo5" path="res://Menus/Map4Button.tscn" id="6_gdcqm"]
+[ext_resource type="PackedScene" uid="uid://d3uxps5flg0n3" path="res://Menus/Map5Button.tscn" id="7_h51sa"]
+[ext_resource type="PackedScene" uid="uid://bx4q488ek50yq" path="res://Menus/Map6Button.tscn" id="8_u34h0"]
 
 [sub_resource type="Theme" id="Theme_2vk40"]
 
@@ -15,22 +23,51 @@ script = ExtResource("1_dfdoj")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 3485.0
+offset_bottom = 1421.0
+scale = Vector2(0.33, 0.443)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="SelectAMap" type="Label" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(1150, 100)
 layout_mode = 2
-size_flags_horizontal = 0
 theme = SubResource("Theme_2vk40")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 100
 text = "Select A Map"
 horizontal_alignment = 1
+
+[node name="BackButton" parent="MarginContainer/VBoxContainer/SelectAMap" instance=ExtResource("2_08wrd")]
+layout_mode = 0
+scale = Vector2(1.1169, 0.821659)
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(1150, 545)
 layout_mode = 2
 columns = 3
+script = ExtResource("2_7rjrs")
+
+[node name="Map1Button" parent="MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("3_c4f8g")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="Map2Button" parent="MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("4_l52eh")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="Map3Button" parent="MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("5_88xgx")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="Map4Button" parent="MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("6_gdcqm")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="Map5Button" parent="MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("7_h51sa")]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="Map6Button" parent="MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("8_u34h0")]
+layout_mode = 2
+mouse_default_cursor_shape = 2

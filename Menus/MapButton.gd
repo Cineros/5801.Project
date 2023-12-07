@@ -1,5 +1,5 @@
 #Made By Hunter Flati
-extends Button
+extends Control
 
 @export_file var map_path
 
@@ -20,4 +20,4 @@ func _on_pressed():
 	if map_path == null:
 		return
 	
-	get_tree().change_scene_to_file(map_path)	
+	get_tree().change_scene_to_file(map_path)

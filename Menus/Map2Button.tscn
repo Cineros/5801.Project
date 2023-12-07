@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcoglrpgln8bu"]
+
+[ext_resource type="Texture2D" uid="uid://bueo83ns34ha6" path="res://Maps/Map 2/Map2.PNG" id="1_iepgh"]
+[ext_resource type="Script" path="res://Menus/MapButton.gd" id="2_a82xs"]
+
+[node name="Map2Button" type="Button"]
+offset_right = 858.0
+offset_bottom = 516.0
+scale = Vector2(1.00907, 0.999999)
+icon = ExtResource("1_iepgh")
+script = ExtResource("2_a82xs")
+map_path = "res://Maps/Map 2/Map2.tscn"
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

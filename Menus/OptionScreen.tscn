@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://tqe5f74qd0g0"]
+
+[ext_resource type="Script" path="res://Menus/MasterVolumeSlider.gd" id="1_x2xs3"]
+[ext_resource type="PackedScene" uid="uid://despybye7x48q" path="res://Menus/BackButton.tscn" id="2_74k3t"]
+
+[node name="OptionScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 132.0
+offset_right = 538.0
+offset_bottom = 178.0
+scale = Vector2(2.28, 2.28)
+
+[node name="MasterVolumeSlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("1_x2xs3")
+bus_name = "Master"
+
+[node name="MasterVolume" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Master Volume"
+
+[node name="BackButton" parent="." instance=ExtResource("2_74k3t")]
+layout_mode = 0
+scale = Vector2(0.476293, 0.52948)

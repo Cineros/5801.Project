@@ -1,7 +1,7 @@
 #Made By Hunter Flati
 extends Control
 
-const map_button = preload("res://Menus/MapButton.tscn")
+const map_button = preload("res://Menus/Map1Button.tscn")
 
 @export_dir var dir_path
 
