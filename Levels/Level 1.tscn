@@ -36,12 +36,12 @@ offset_bottom = 62.0
 [node name="Towers" type="Node2D" parent="."]
 
 [node name="pointer_tower" parent="Towers" instance=ExtResource("6_ysu7i")]
-position = Vector2(457, 562)
+position = Vector2(583, 270)
 
 [node name="Cursor_Platform" parent="Towers" instance=ExtResource("5_oyhnf")]
 position = Vector2(88, 333)
 
 [node name="4dArrow_Tower" parent="Towers" instance=ExtResource("7_rm550")]
-position = Vector2(131, 584)
+position = Vector2(255, 205)
 
 [connection signal="timeout" from="spawning_node/spawn_timer" to="spawning_node" method="_on_spawn_timer_timeout"]

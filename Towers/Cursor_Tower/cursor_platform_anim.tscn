@@ -80,6 +80,7 @@ _surfaces = [{
 }]
 
 [node name="Cursor_Platform" type="Node2D"]
+scale = Vector2(0.8, 0.8)
 
 [node name="CursorLandingPlatform" type="MeshInstance2D" parent="."]
 rotation = 1.5708

@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpucj61t6rawa"]
+
+[sub_resource type="Theme" id="Theme_minkc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jiyb4"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2gn4m"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="round_counter" type="Label"]
+offset_left = 186.0
+offset_right = 226.0
+offset_bottom = 26.0
+scale = Vector2(3, 3)
+theme = SubResource("Theme_minkc")
+text = "0"
+label_settings = SubResource("LabelSettings_jiyb4")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -61.6667
+offset_right = -10.6667
+offset_bottom = 26.0
+text = "Round"
+label_settings = SubResource("LabelSettings_2gn4m")

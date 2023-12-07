@@ -17,7 +17,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 	destroy()
 
 func _on_cursor_hurtbox_body_entered(body):
-	if "!" in body.name:
+	if "Enemy" in body.name:
 		body.health -= DAMAGE
 		durability - 1
 		if durability == 0:

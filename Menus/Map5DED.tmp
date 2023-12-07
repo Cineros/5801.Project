@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://oxqg6ue0s8ib"]
+
+[ext_resource type="Script" path="res://Menus/MapSelectScreen.gd" id="1_dfdoj"]
+[ext_resource type="Script" path="res://Menus/Map1Button.gd" id="2_jpel2"]
+
+[sub_resource type="Theme" id="Theme_2vk40"]
+
+[node name="MapSelectScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dfdoj")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1150, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+theme = SubResource("Theme_2vk40")
+theme_override_font_sizes/font_size = 50
+text = "Select A Map"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1150, 545)
+layout_mode = 2
+columns = 3
+script = ExtResource("2_jpel2")

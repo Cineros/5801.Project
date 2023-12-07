@@ -57,5 +57,5 @@ func _on_range_body_entered(body):
 
 
 func _on_damage_range_body_entered(body):
-		if "!" in body.name:
+		if "Enemy" in body.name:
 			body.health -= DAMAGE

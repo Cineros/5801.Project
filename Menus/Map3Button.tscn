@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba7yagenq2m3p"]
+
+[ext_resource type="Texture2D" uid="uid://ch0n8s27jggs" path="res://Maps/Map 3/Map3.PNG" id="1_kc4kw"]
+[ext_resource type="Script" path="res://Menus/MapButton.gd" id="2_rslq1"]
+
+[node name="Map3Button" type="Button"]
+offset_right = 858.0
+offset_bottom = 516.0
+scale = Vector2(1.00495, 0.999801)
+icon = ExtResource("1_kc4kw")
+script = ExtResource("2_rslq1")
+map_path = "res://Maps/Map 3/Map3.tscn"
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

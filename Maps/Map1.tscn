@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://utcdo3xqkr0s"]
+[gd_scene load_steps=7 format=3 uid="uid://utcdo3xqkr0s"]
 
 [ext_resource type="PackedScene" uid="uid://dq1wltr4x4pn4" path="res://Tiles/tile_map.tscn" id="1_26kwq"]
 [ext_resource type="Script" path="res://Maps/PathSpawner.gd" id="2_g6hu1"]
 [ext_resource type="Texture2D" uid="uid://bvru2wf8osw6v" path="res://gen_sprites/my_computer.png" id="3_b6obx"]
+[ext_resource type="PackedScene" uid="uid://bmqj46uvenr0d" path="res://interface/buy_menu/tower_grid.tscn" id="4_rvar0"]
+[ext_resource type="PackedScene" uid="uid://bpucj61t6rawa" path="res://interface/round_counter/round_counter.tscn" id="5_gj3jd"]
+[ext_resource type="PackedScene" uid="uid://cj2a7aykn6l6n" path="res://interface/start_button/start_button.tscn" id="6_4s0pw"]
 
 [node name="Map 1" type="Node2D"]
 
@@ -19,9 +22,6 @@ position = Vector2(2241, 1438)
 script = ExtResource("2_g6hu1")
 
 [node name="Timer" type="Timer" parent="PathSpawner"]
-autostart = true
-
-[node name="Towers" type="Node2D" parent="."]
 
 [node name="MyComputer" type="Polygon2D" parent="."]
 position = Vector2(213, 320)
@@ -30,5 +30,26 @@ texture = ExtResource("3_b6obx")
 polygon = PackedVector2Array(91, -72.9, 91, -71.2, 105, -64.2, 105, 44, 102.5, 44, 55.6, 77, 52.5, 77, 40.5, 84, 39, 84, -77, 79, -77, 76.8, -80.4, 73.5, -79.3, 71, -79, 67, -76.9, 67, -71.9, 61, -69.7, 61, -59, 52.1, -59, 48.6, -65, 39.6, -65, -35.3, -63.4, -40, -61.8, -40, -48.8, -53, -45.4, -53, 14, -75.4, 14, -77.1)
 uv = PackedVector2Array(341, 177.1, 341, 178.8, 355, 185.8, 355, 294, 352.5, 294, 305.6, 327, 302.5, 327, 290.5, 334, 289, 334, 173, 329, 173, 326.8, 169.6, 323.5, 170.7, 321, 171, 317, 173.1, 317, 178.1, 311, 180.3, 311, 191, 302.1, 191, 298.6, 185, 289.6, 185, 214.7, 186.6, 210, 188.2, 210, 201.2, 197, 204.6, 197, 264, 174.6, 264, 172.9)
 polygons = [PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26)]
+
+[node name="Towers_Container" type="Node" parent="."]
+
+[node name="buy_grid" parent="Towers_Container" instance=ExtResource("4_rvar0")]
+offset_left = -1077.0
+offset_top = 193.0
+offset_right = -1037.0
+offset_bottom = 321.0
+scale = Vector2(3, 3)
+
+[node name="round_counter" parent="." instance=ExtResource("5_gj3jd")]
+offset_left = 276.0
+offset_top = 64.0
+offset_right = 316.0
+offset_bottom = 90.0
+
+[node name="start_button" parent="." instance=ExtResource("6_4s0pw")]
+offset_left = 1145.0
+offset_top = 708.0
+offset_right = 1145.0
+offset_bottom = 708.0
 
 [connection signal="timeout" from="PathSpawner/Timer" to="PathSpawner" method="_on_timer_timeout"]
