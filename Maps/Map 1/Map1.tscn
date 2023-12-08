@@ -37,5 +37,4 @@ scale = Vector2(2.2, 2.18)
 
 [connection signal="set_health" from="PathSpawner" to="PathSpawner" method="_on_set_health"]
 [connection signal="timeout" from="PathSpawner/Timer" to="PathSpawner" method="_on_timer_timeout"]
-[connection signal="hp_damage" from="my_computer" to="Interface" method="_on_my_computer_hp_damage"]
 [connection signal="start_round" from="Interface" to="PathSpawner" method="_on_interface_start_round"]
