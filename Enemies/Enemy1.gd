@@ -13,7 +13,7 @@ func _process(delta):
 	if health <= 0:
 		destroy()
 
-func _on_set_health(hp):
+func _on_path_2d_set_hp(hp):
 	if !health_set:
 			health = hp
 			health_set = true

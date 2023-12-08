@@ -12,9 +12,6 @@ var bits_needed = 2
 var enemy_scene0 = preload("res://Enemies/Enemy0.tscn")
 var enemy_scene1 = preload("res://Enemies/Enemy1.tscn")
 
-
-
-
 signal set_health
 
 func _on_timer_timeout():
@@ -28,42 +25,59 @@ func _on_timer_timeout():
 			bits_needed = 8
 
 	if temp_tik > 0 or counter < 8:
-		if (temp_tik % 2 == 0 and temp_tik >= 128) or temp_tik >= 128 and counter == 0:
-			spawnOne(128)
-		elif counter == 0:
-			spawnZero()
-		if (temp_tik % 2 == 0 and temp_tik >= 64) or temp_tik >= 64 and counter == 1:
-			spawnOne(64)
-		elif counter == 1:
-			spawnZero()
-		if (temp_tik % 2 == 0 and temp_tik >= 32) or temp_tik >= 32 and counter == 2:
-			spawnOne(32)
-		elif counter == 2:
-			spawnZero()
-		if (temp_tik % 2 == 0 and temp_tik >= 16) or temp_tik >= 16 and counter == 3:
-			spawnOne(16)
-		elif counter == 3:
-			spawnZero()
-		if (temp_tik % 2 == 0 and temp_tik >= 8) or temp_tik >= 8 and counter == 4:
-			spawnOne(8)
-		elif counter == 4:
-			spawnZero()
-		if (temp_tik % 2 == 0 and temp_tik >= 4) or temp_tik >= 4 and counter == 5:
-			spawnOne(4)
-		elif counter == 5:
-			spawnZero()
-		if (temp_tik % 2 == 0 and temp_tik >= 2) or temp_tik >= 2 and counter == 6:
-			spawnOne(2)
-		elif counter == 6:
-			spawnZero()
-		if temp_tik == 1:
-			spawnOne(1)
-			if byte_count == bits_needed:
-				get_node("Timer").stop()
-		elif counter == 7:
-			spawnZero()
-			if byte_count == bits_needed:
-				get_node("Timer").stop()
+		match counter:
+			0:
+				if (temp_tik % 2 == 0 and temp_tik >= 128):
+					spawnOne(128)
+					print("spawned 1 -128")
+				else:
+					spawnZero()
+			1:
+				if (temp_tik % 2 == 0 and temp_tik >= 64):
+					spawnOne(64)
+					print("spawned 1 -64")
+				else:
+					spawnZero()
+			2:
+				if (temp_tik % 2 == 0 and temp_tik >= 32):
+					spawnOne(32)
+					print("spawned 1 -32")
+				else:
+					spawnZero()
+			3:
+				if (temp_tik % 2 == 0 and temp_tik >= 16):
+					spawnOne(16)
+					print("spawned 1 -16")
+				else:
+					spawnZero()
+			4:
+				if (temp_tik % 2 == 0 and temp_tik >= 8):
+					spawnOne(8)
+					print("spawned 1 -8")
+				else:
+					spawnZero()
+			5:
+				if (temp_tik % 2 == 0 and temp_tik >= 4):
+					spawnOne(4)
+					print("spawned 1 -4")
+				else:
+					spawnZero()
+			6:
+				if (temp_tik % 2 == 0 and temp_tik >= 2):
+					spawnOne(2)
+					print("spawned 1 -2")
+				else:
+					spawnZero()
+			7:
+				if temp_tik == 1:
+					spawnOne(1)
+					print("spawned 1 -1")
+					if byte_count == bits_needed:
+						get_node("Timer").stop()
+				elif counter == 7:
+					spawnZero()
+					if byte_count == bits_needed:
+						get_node("Timer").stop()
 	counter += 1
 	if counter > 7:
 		byte_count += 1
@@ -78,6 +92,9 @@ func spawnOne(health):
 func spawnZero():
 	var tempPath = path.instantiate()
 	add_child(tempPath)
+	
+	
+	
 	
 
 func _on_interface_start_round():
