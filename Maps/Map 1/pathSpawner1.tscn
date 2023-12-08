@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Maps/Map 1/PathSpawner1.gd" id="1_1hvk0"]
 [ext_resource type="PackedScene" uid="uid://cdspm7xmusprh" path="res://Maps/Map 1/Map1Path1.tscn" id="2_xd0mw"]
-[ext_resource type="PackedScene" uid="uid://yxbmwk8fq3ex" path="res://Maps/Map 1/Map1Path.tscn" id="3_iwntl"]
+[ext_resource type="PackedScene" uid="uid://yxbmwk8fq3ex" path="res://Maps/Map1Path.tscn" id="3_iwntl"]
 
 [node name="PathSpawner" type="Node2D"]
 position = Vector2(-4, 9)

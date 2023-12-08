@@ -10,3 +10,5 @@ func _on_ready_button_pressed():
 	round_count.text = str(counter)
 	emit_signal("ready_button_pressed")
 	get_node("../start_button").visible = false
+
+

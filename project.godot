@@ -15,6 +15,10 @@ run/main_scene="res://Menus/main_menu.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+MenuMusic="*res://Autoloads/MenuMusic.tscn"
+
 [display]
 
 window/stretch/mode="canvas_items"
@@ -38,3 +42,4 @@ textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/light_projectors/filter=0
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
