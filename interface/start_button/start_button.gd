@@ -11,4 +11,5 @@ func _on_ready_button_pressed():
 	emit_signal("ready_button_pressed")
 	get_node("../start_button").visible = false
 
-
+func _on_interface_round_end():
+	get_node("../start_button").visible = true

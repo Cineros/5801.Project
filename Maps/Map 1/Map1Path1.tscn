@@ -19,5 +19,7 @@ rotates = false
 loop = false
 
 [node name="Enemy1" parent="PathFollow2D" instance=ExtResource("1_cgwth")]
+position = Vector2(2, -1)
 
 [connection signal="set_hp" from="." to="PathFollow2D/Enemy1" method="_on_path_2d_set_hp"]
+[connection signal="oneDeath" from="PathFollow2D/Enemy1" to="." method="_on_enemy_1_one_death"]

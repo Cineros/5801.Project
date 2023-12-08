@@ -66,6 +66,7 @@ scale = Vector2(2, 2)
 
 [connection signal="damage" from="." to="Hbar" method="_on_interface_damage"]
 [connection signal="health_changed" from="." to="Hbar" method="_on_interface_health_changed"]
+[connection signal="roundEnd" from="." to="start_button" method="_on_interface_round_end"]
 [connection signal="start_round" from="." to="start_button" method="_on_interface_start_round"]
 [connection signal="ready_button_pressed" from="start_button" to="." method="_on_start_button_ready_button_pressed"]
 

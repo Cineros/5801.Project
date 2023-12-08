@@ -13,6 +13,12 @@ var enemy_scene0 = preload("res://Enemies/Enemy0.tscn")
 var enemy_scene1 = preload("res://Enemies/Enemy1.tscn")
 
 signal set_health
+signal addScore
+signal roundEnd
+
+
+func _process(delta):
+	pass
 
 func _on_timer_timeout():
 	print(temp_tik)
@@ -74,10 +80,14 @@ func _on_timer_timeout():
 					print("spawned 1 -1")
 					if byte_count == bits_needed:
 						get_node("Timer").stop()
+						emit_signal("roundEnd")
+						byte_count = 0
 				elif counter == 7:
 					spawnZero()
 					if byte_count == bits_needed:
 						get_node("Timer").stop()
+						emit_signal("roundEnd")
+						byte_count = 0
 	counter += 1
 	if counter > 7:
 		byte_count += 1
@@ -93,16 +103,21 @@ func spawnZero():
 	var tempPath = path.instantiate()
 	add_child(tempPath)
 	
-	
-	
-	
 
 func _on_interface_start_round():
 	get_node("Timer").start()
 	round_count += 1
 	if round_count < 6:
-		enemy_tickets * 2
+		enemy_tickets *= 2
 	else:
-		enemy_tickets * 1.2
+		enemy_tickets *= 1.2
 	temp_tik = enemy_tickets
 	print(enemy_tickets)
+
+
+func _on_one_path_one_death(points):
+	emit_signal("addScore", points)
+
+
+func _on_zero_path_zero_death():
+	emit_signal("addScore", 1)

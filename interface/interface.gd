@@ -3,6 +3,7 @@ extends Control
 
 signal start_round
 signal damage
+signal roundEnd
 
 # create enemy spawn signal to send to counter
 signal enemy_spawned(count)
@@ -20,3 +21,7 @@ func _on_start_button_ready_button_pressed():
 
 func _on_my_computer_hp_damage(hp):
 	emit_signal("damage", hp)
+
+
+func _on_path_spawner_round_end():
+	emit_signal("roundEnd")

@@ -18,7 +18,7 @@ func _process(delta):
 		
 
 func _on_range_body_entered(body):
-	if "!" in body.name or "Enemy 0" in body.name:
+	if "!" in body.name or "Enemy" in body.name:
 		var tempArray = []
 		targets = get_node("range").get_overlapping_bodies()
 		

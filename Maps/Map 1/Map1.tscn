@@ -33,3 +33,4 @@ position = Vector2(-7, 10)
 
 [connection signal="hp_damage" from="my_computer" to="Interface" method="_on_my_computer_hp_damage"]
 [connection signal="start_round" from="Interface" to="PathSpawner" method="_on_interface_start_round"]
+[connection signal="roundEnd" from="PathSpawner" to="Interface" method="_on_path_spawner_round_end"]
