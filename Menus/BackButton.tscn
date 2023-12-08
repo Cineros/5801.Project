@@ -1,6 +1,22 @@
 [gd_scene load_steps=2 format=3 uid="uid://despybye7x48q"]
 
-[ext_resource type="Script" path="res://Menus/BackButton.gd" id="1_7p1gv"]
+[sub_resource type="GDScript" id="GDScript_d1bst"]
+script/source = "#Made By Hunter Flati
+extends Button
+
+#@export_file var main_menu
+
+var mainSelect = load(\"res://Menus/main_menu.tscn\")
+
+func _on_pressed():
+	#if main_menu == null:
+		#return
+	var load_main_select = mainSelect.instantiate()
+	get_parent().add_child(load_main_select)
+	get_tree().change_scene_to_file(\"res://Menus/main_menu.tscn\")
+	queue_free()
+	#get_tree().change_scene_to_file(main_menu)
+"
 
 [node name="BackButton" type="Button"]
 offset_right = 8.0
@@ -8,7 +24,6 @@ offset_bottom = 8.0
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 75
 text = "Back"
-script = ExtResource("1_7p1gv")
-main_menu = "res://Menus/main_menu.tscn"
+script = SubResource("GDScript_d1bst")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
