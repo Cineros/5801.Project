@@ -7,8 +7,7 @@ var target
 var pathName = ""
 
 func _physics_process(delta):
-	var spawnNode = get_tree().get_root().get_node(".../PathSpawner")
-	
+	var spawnNode = $PathSpawner
 	for i in spawnNode.get_child_count():
 		if spawnNode.get_child(i).name == pathName:
 			target = spawnNode.get_child(i).get_child(0).get_child(0).global_position
