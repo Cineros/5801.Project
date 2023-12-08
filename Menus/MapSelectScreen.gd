@@ -23,7 +23,7 @@ func get_maps(path):
 	else:
 		print('Error')
 		
-func create_map_button(map_path: String, map_name: String):
+func create_map_button(map_path: String, _map_name: String):
 	var button = map_button.instantiate()
 	#button.text = map_name.trim_suffix('.tscn').replace('_', ' ')
 	button.map_path = map_path

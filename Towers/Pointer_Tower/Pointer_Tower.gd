@@ -12,7 +12,7 @@ var target
 
 @onready var fireDelay := $fire_delay
 
-func _process(delta):
+func _process(_delta):
 	if is_instance_valid(target):
 		self.look_at(target.global_position)
 		
@@ -50,5 +50,5 @@ func _on_range_body_entered(body):
 		tempBullet.global_position = get_node("Pointer/point").global_position
 
 
-func _on_range_body_exited(body):
+func _on_range_body_exited(_body):
 	targets = get_node("range").get_overlapping_bodies()

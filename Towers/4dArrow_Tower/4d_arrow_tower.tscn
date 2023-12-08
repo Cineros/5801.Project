@@ -23,7 +23,6 @@ radius = 132.0
 radius = 196.092
 
 [node name="4dArrow_Tower" type="Node2D"]
-scale = Vector2(0.7, 0.7)
 script = ExtResource("1_nkf4o")
 
 [node name="4dArrow" type="MeshInstance2D" parent="."]

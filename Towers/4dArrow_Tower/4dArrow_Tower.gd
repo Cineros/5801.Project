@@ -48,11 +48,11 @@ func _on_enemy_detection_range_body_entered(body):
 			murderTime(get_process_delta_time())
 
 
-func _on_enemy_detection_range_body_exited(body):
+func _on_enemy_detection_range_body_exited(_body):
 	targets = get_node("enemy_detection_range").get_overlapping_bodies()
 
 
-func _on_range_body_entered(body):
+func _on_range_body_entered(_body):
 	pass
 
 

@@ -17,7 +17,7 @@ signal addScore
 signal roundEnd
 
 
-func _process(delta):
+func _process(_delta):
 	pass
 
 func _on_timer_timeout():
@@ -33,43 +33,43 @@ func _on_timer_timeout():
 	if temp_tik > 0 or counter < 8:
 		match counter:
 			0:
-				if (temp_tik % 2 == 0 and temp_tik >= 128):
+				if (temp_tik % 2 == 0 and temp_tik >= 128) or (temp_tik > 128 and temp_tik % 2 == 1):
 					spawnOne(128)
 					print("spawned 1 -128")
 				else:
 					spawnZero()
 			1:
-				if (temp_tik % 2 == 0 and temp_tik >= 64):
+				if (temp_tik % 2 == 0 and temp_tik >= 64) or (temp_tik > 64  and temp_tik % 2 == 1):
 					spawnOne(64)
 					print("spawned 1 -64")
 				else:
 					spawnZero()
 			2:
-				if (temp_tik % 2 == 0 and temp_tik >= 32):
+				if (temp_tik % 2 == 0 and temp_tik >= 32) or (temp_tik > 32  and temp_tik % 2 == 1):
 					spawnOne(32)
 					print("spawned 1 -32")
 				else:
 					spawnZero()
 			3:
-				if (temp_tik % 2 == 0 and temp_tik >= 16):
+				if (temp_tik % 2 == 0 and temp_tik >= 16) or (temp_tik > 16  and temp_tik % 2 == 1):
 					spawnOne(16)
 					print("spawned 1 -16")
 				else:
 					spawnZero()
 			4:
-				if (temp_tik % 2 == 0 and temp_tik >= 8):
+				if (temp_tik % 2 == 0 and temp_tik >= 8) or (temp_tik > 8  and temp_tik % 2 == 1):
 					spawnOne(8)
 					print("spawned 1 -8")
 				else:
 					spawnZero()
 			5:
-				if (temp_tik % 2 == 0 and temp_tik >= 4):
+				if (temp_tik % 2 == 0 and temp_tik >= 4) or (temp_tik > 4  and temp_tik % 2 == 1):
 					spawnOne(4)
 					print("spawned 1 -4")
 				else:
 					spawnZero()
 			6:
-				if (temp_tik % 2 == 0 and temp_tik >= 2):
+				if (temp_tik % 2 == 0 and temp_tik >= 2) or (temp_tik > 2  and temp_tik % 2 == 1):
 					spawnOne(2)
 					print("spawned 1 -2")
 				else:
@@ -107,7 +107,7 @@ func spawnZero():
 func _on_interface_start_round():
 	get_node("Timer").start()
 	round_count += 1
-	if round_count < 6:
+	if round_count < 6 and round_count != 1:
 		enemy_tickets *= 2
 	else:
 		enemy_tickets *= 1.2

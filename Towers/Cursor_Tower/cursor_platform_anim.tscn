@@ -98,7 +98,6 @@ script = ExtResource("7_o32gm")
 [node name="midPoint" type="Marker2D" parent="Cursor_Tower"]
 
 [node name="fire_Delay" type="Timer" parent="Cursor_Tower"]
-wait_time = 0.25
 one_shot = true
 
 [node name="Cursor" type="MeshInstance2D" parent="Cursor_Tower"]

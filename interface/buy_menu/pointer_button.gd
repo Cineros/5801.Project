@@ -9,9 +9,9 @@ func _on_pressed():
 	add_child(tower)
 
 
-func _on_area_2d_body_entered(body):
+func _on_area_2d_body_entered(_body):
 	disabled = true
 
 
-func _on_area_2d_body_exited(body):
+func _on_area_2d_body_exited(_body):
 	disabled = false

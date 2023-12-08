@@ -6,7 +6,7 @@ var SPEED = 800
 var target
 var pathName = ""
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var spawnNode = get_tree().get_root().get_node("PathSpawner")
 	for i in spawnNode.get_child_count():
 		if spawnNode.get_child(i).name == pathName:
