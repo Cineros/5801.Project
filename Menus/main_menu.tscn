@@ -1,8 +1,38 @@
-[gd_scene load_steps=4 format=3 uid="uid://comb1v2ocrbqv"]
+[gd_scene load_steps=8 format=3 uid="uid://comb1v2ocrbqv"]
 
 [ext_resource type="Script" path="res://Menus/main_menu.gd" id="1_0b7mf"]
 [ext_resource type="Texture2D" uid="uid://bg18gkdhm17kt" path="res://gen_sprites/bits_byte.png" id="2_0wvt6"]
+[ext_resource type="Texture2D" uid="uid://d0551tj7lmigo" path="res://Enemies/1.png" id="3_erup0"]
 [ext_resource type="Theme" uid="uid://qui78cpseji7" path="res://interface/enemy_counter/counter_theme.tres" id="3_mlduu"]
+[ext_resource type="Texture2D" uid="uid://dampl1qawt42i" path="res://Enemies/0.png" id="4_qf80d"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s18di"]
+emission_shape = 3
+emission_box_extents = Vector3(150, 1, 1)
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 75.0
+initial_velocity_max = 75.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.1
+scale_max = 0.3
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sgv5f"]
+emission_shape = 3
+emission_box_extents = Vector3(150, 1, 1)
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 75.0
+initial_velocity_max = 75.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.1
+scale_max = 0.3
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -14,6 +44,24 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0b7mf")
+
+[node name="Rain0" type="GPUParticles2D" parent="."]
+position = Vector2(111, -288)
+scale = Vector2(5.46042, 5.15394)
+amount = 40
+process_material = SubResource("ParticleProcessMaterial_s18di")
+texture = ExtResource("4_qf80d")
+lifetime = 2.0
+randomness = 0.5
+
+[node name="Rain1" type="GPUParticles2D" parent="."]
+position = Vector2(108, -287)
+scale = Vector2(5.52, 4.8)
+amount = 40
+process_material = SubResource("ParticleProcessMaterial_sgv5f")
+texture = ExtResource("3_erup0")
+lifetime = 2.0
+randomness = 0.5
 
 [node name="BitsByte" type="Sprite2D" parent="."]
 position = Vector2(1, -159)
