@@ -25,8 +25,6 @@ func _process(delta):
 		
 
 func _on_start_button_pressed():
-	var load_map_select = mSelect.instantiate()
-	get_parent().add_child(load_map_select)
 	get_tree().change_scene_to_file("res://Menus/MapSelectScreen.tscn")
 
 
@@ -35,7 +33,5 @@ func _on_quit_button_pressed():
 	
 
 func _on_options_button_pressed():
-	var load_options_select = oSelect.instantiate()
-	get_parent().add_child(load_options_select)
 	get_tree().change_scene_to_file("res://Menus/OptionScreen.tscn")
 

@@ -6,15 +6,11 @@ extends Button
 
 #@export_file var main_menu
 
-var mainSelect = load(\"res://Menus/main_menu.tscn\")
+var main = preload(\"res://Menus/main_menu.tscn\").instantiate()
 
 func _on_pressed():
-	#if main_menu == null:
-		#return
-	var load_main_select = mainSelect.instantiate()
-	get_parent().add_child(load_main_select)
 	get_tree().change_scene_to_file(\"res://Menus/main_menu.tscn\")
-	#get_tree().change_scene_to_file(main_menu)
+	
 "
 
 [node name="BackButton" type="Button"]
