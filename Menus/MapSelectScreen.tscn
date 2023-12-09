@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://d2u6rb1p0uepx"]
+[gd_scene load_steps=10 format=3 uid="uid://d2u6rb1p0uepx"]
 
 [ext_resource type="Script" path="res://Menus/MapSelectScreen.gd" id="1_dfdoj"]
-[ext_resource type="Script" path="res://Menus/MapButton.gd" id="2_7rjrs"]
 [ext_resource type="PackedScene" uid="uid://despybye7x48q" path="res://Menus/BackButton.tscn" id="2_08wrd"]
 [ext_resource type="PackedScene" uid="uid://boqpxo1diy8sm" path="res://Menus/Map1Button.tscn" id="3_c4f8g"]
 [ext_resource type="PackedScene" uid="uid://dcoglrpgln8bu" path="res://Menus/Map2Button.tscn" id="4_l52eh"]
@@ -46,7 +45,6 @@ scale = Vector2(1.1169, 0.821659)
 custom_minimum_size = Vector2(1150, 545)
 layout_mode = 2
 columns = 3
-script = ExtResource("2_7rjrs")
 
 [node name="Map1Button" parent="MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("3_c4f8g")]
 layout_mode = 2
