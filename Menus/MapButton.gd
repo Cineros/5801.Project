@@ -21,4 +21,3 @@ func _on_pressed():
 		return
 	
 	get_tree().change_scene_to_file(map_path)
-	
