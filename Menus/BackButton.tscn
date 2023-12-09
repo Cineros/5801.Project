@@ -14,7 +14,6 @@ func _on_pressed():
 	var load_main_select = mainSelect.instantiate()
 	get_parent().add_child(load_main_select)
 	get_tree().change_scene_to_file(\"res://Menus/main_menu.tscn\")
-	queue_free()
 	#get_tree().change_scene_to_file(main_menu)
 "
 
