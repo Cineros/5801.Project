@@ -2,5 +2,8 @@
 extends HBoxContainer
 
 func _on_interface_damage(hp):
+	if hp < 1:
+		get_tree().change_scene_to_file("res://Menus/Game_over_screen/game_over.tscn")
+		pass
 	$counter/Label.text = str(hp)
 	$TextureProgressBar.value = hp

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://5l0j0gqgfbao"]
+
+[ext_resource type="Texture2D" uid="uid://c4t7ga4jf4vcb" path="res://Menus/Game_over_screen/game_over_img.png" id="1_e4dtj"]
+[ext_resource type="Script" path="res://Menus/Game_over_screen/game_over.gd" id="1_ydv1a"]
+[ext_resource type="Script" path="res://Menus/Game_over_screen/Timer.gd" id="3_p55e3"]
+
+[node name="Game_Over" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ydv1a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(573, 325)
+scale = Vector2(4, 4)
+texture = ExtResource("1_e4dtj")
+
+[node name="Timer" type="Timer" parent="."]
+script = ExtResource("3_p55e3")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
