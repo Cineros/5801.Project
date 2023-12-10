@@ -9,6 +9,7 @@ var round_count = 0
 var enemy_tickets: int = 12
 var temp_tik
 var bits_needed = 2
+var tempHP = 2
 var enemy_scene0 = preload("res://Enemies/Enemy0.tscn")
 var enemy_scene1 = preload("res://Enemies/Enemy1.tscn")
 
@@ -36,42 +37,49 @@ func _on_timer_timeout():
 				if (temp_tik % 2 == 0 and temp_tik >= 128) or (temp_tik > 128 and temp_tik % 2 == 1):
 					spawnOne(128)
 					print("spawned 1 -128")
+					tempHP = 128
 				else:
 					spawnZero()
 			1:
 				if (temp_tik % 2 == 0 and temp_tik >= 64) or (temp_tik > 64  and temp_tik % 2 == 1):
 					spawnOne(64)
 					print("spawned 1 -64")
+					tempHP = 64
 				else:
 					spawnZero()
 			2:
 				if (temp_tik % 2 == 0 and temp_tik >= 32) or (temp_tik > 32  and temp_tik % 2 == 1):
 					spawnOne(32)
 					print("spawned 1 -32")
+					tempHP = 32
 				else:
 					spawnZero()
 			3:
 				if (temp_tik % 2 == 0 and temp_tik >= 16) or (temp_tik > 16  and temp_tik % 2 == 1):
 					spawnOne(16)
 					print("spawned 1 -16")
+					tempHP = 16
 				else:
 					spawnZero()
 			4:
 				if (temp_tik % 2 == 0 and temp_tik >= 8) or (temp_tik > 8  and temp_tik % 2 == 1):
 					spawnOne(8)
 					print("spawned 1 -8")
+					tempHP = 8
 				else:
 					spawnZero()
 			5:
 				if (temp_tik % 2 == 0 and temp_tik >= 4) or (temp_tik > 4  and temp_tik % 2 == 1):
 					spawnOne(4)
 					print("spawned 1 -4")
+					tempHP = 4
 				else:
 					spawnZero()
 			6:
 				if (temp_tik % 2 == 0 and temp_tik >= 2) or (temp_tik > 2  and temp_tik % 2 == 1):
 					spawnOne(2)
 					print("spawned 1 -2")
+					tempHP = 2
 				else:
 					spawnZero()
 			7:
@@ -96,7 +104,6 @@ func _on_timer_timeout():
 func spawnOne(health):
 	var one_path = OnePath.instantiate()
 	add_child(one_path)
-	emit_signal("set_health", health)
 	temp_tik -= health
 	
 func spawnZero():
@@ -121,3 +128,8 @@ func _on_one_path_one_death(points):
 
 func _on_zero_path_zero_death():
 	emit_signal("addScore", 1)
+
+
+func _on_one_path_request_health():
+	emit_signal("set_health", tempHP)
+	print("sent HP to spawner")

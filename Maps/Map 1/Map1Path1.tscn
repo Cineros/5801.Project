@@ -20,4 +20,6 @@ loop = false
 
 [node name="Enemy1" parent="PathFollow2D" instance=ExtResource("1_cgwth")]
 
+[connection signal="sendHealth" from="." to="PathFollow2D/Enemy1" method="_on_path_2d_send_health"]
 [connection signal="oneDeath" from="PathFollow2D/Enemy1" to="." method="_on_enemy_1_one_death"]
+[connection signal="requestHealth" from="PathFollow2D/Enemy1" to="." method="_on_enemy_1_request_health"]
