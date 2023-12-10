@@ -2,21 +2,15 @@
 extends CharacterBody2D
 
 var DAMAGE = 1
-var SPEED = 800
+var SPEED = 5000
 var target
 var pathName = ""
 
-func _physics_process(_delta):
-	var spawnNode = get_tree().get_root().get_node("PathSpawner")
-	for i in spawnNode.get_child_count():
-		if spawnNode.get_child(i).name == pathName:
-			target = spawnNode.get_child(i).get_child(0).get_child(0).global_position
-	
-	velocity = global_position.direction_to(target) * SPEED
-	
-	look_at(target)
-	
-	move_and_slide()
+func _process(_delta):
+	if target != null:
+		velocity = global_position.direction_to(target) * SPEED
+		look_at(target)
+		move_and_slide()
 
 func destroy():
 	queue_free()
