@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://utcdo3xqkr0s"]
+[gd_scene load_steps=7 format=3 uid="uid://utcdo3xqkr0s"]
 
 [ext_resource type="PackedScene" uid="uid://dq1wltr4x4pn4" path="res://Tiles/tile_map.tscn" id="1_l6s48"]
 [ext_resource type="PackedScene" uid="uid://bgu60eus3wlk4" path="res://interface/interface.tscn" id="4_0vvyt"]
+[ext_resource type="Script" path="res://interface/buy_menu/tower_grid.gd" id="4_ecnvt"]
+[ext_resource type="Script" path="res://interface/buy_menu/money_counter/money_counter.gd" id="4_hk1vl"]
 [ext_resource type="PackedScene" uid="uid://dqqhew8tfbgw0" path="res://Maps/Map 1/pathSpawner1.tscn" id="4_muvjn"]
 [ext_resource type="PackedScene" uid="uid://dkpvpgjrknins" path="res://gen_sprites/my_computer.tscn" id="7_oc8v2"]
 
@@ -28,11 +30,29 @@ offset_right = 65.0
 offset_bottom = 60.0
 scale = Vector2(2.2, 2.18)
 
+[node name="buy_grid" parent="Interface" index="1"]
+script = ExtResource("4_ecnvt")
+
+[node name="money_counter" parent="Interface" index="2"]
+script = ExtResource("4_hk1vl")
+
 [node name="PathSpawner" parent="." instance=ExtResource("4_muvjn")]
 position = Vector2(-7, 10)
 
 [connection signal="hp_damage" from="my_computer" to="Interface" method="_on_my_computer_hp_damage"]
 [connection signal="start_round" from="Interface" to="PathSpawner" method="_on_interface_start_round"]
+[connection signal="money_change" from="Interface/buy_grid" to="Interface/money_counter" method="_on_buy_grid_money_change"]
+[connection signal="tower_bought" from="Interface/buy_grid/pointer_button" to="Interface/buy_grid" method="_on_pointer_button_tower_bought"]
+[connection signal="tower_bought" from="Interface/buy_grid/Arrow_button" to="Interface/buy_grid" method="_on_arrow_button_tower_bought"]
+[connection signal="tower_bought" from="Interface/buy_grid/cursor_button" to="Interface/buy_grid" method="_on_cursor_button_tower_bought"]
+[connection signal="cash_amount" from="Interface/money_counter" to="Interface/buy_grid" method="_on_money_counter_cash_amount"]
+[connection signal="money" from="Interface/start_button" to="Interface/money_counter" method="_on_start_button_money"]
 [connection signal="roundEnd" from="PathSpawner" to="Interface" method="_on_path_spawner_round_end"]
 
+[editable path="Interface"]
+[editable path="Interface/Hbar"]
+[editable path="Interface/Hbar/counter"]
+[editable path="Interface/buy_grid"]
+[editable path="Interface/money_counter"]
+[editable path="Interface/round_counter"]
 [editable path="PathSpawner"]

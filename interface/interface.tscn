@@ -37,11 +37,11 @@ offset_bottom = 646.0
 grow_horizontal = 1
 grow_vertical = 0
 
-[node name="Label" parent="buy_grid/4dArrow_button" index="1"]
-offset_left = 44.0
-offset_top = 0.0
-offset_right = 84.0
-offset_bottom = 40.0
+[node name="Label" parent="buy_grid/pointer_button" index="1"]
+text = "$40"
+
+[node name="Label" parent="buy_grid/Arrow_button" index="1"]
+text = "$20"
 
 [node name="Label" parent="buy_grid/cursor_button" index="1"]
 offset_left = 42.0
