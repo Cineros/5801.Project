@@ -10,82 +10,68 @@ var enemy_tickets: int = 12
 var temp_tik
 var bits_needed = 2
 var tempHP = 2
+var zeroHP = 1
 var enemy_scene0 = preload("res://Enemies/Enemy0.tscn")
 var enemy_scene1 = preload("res://Enemies/Enemy1.tscn")
 
-signal set_health
-signal addScore
-signal roundEnd
+signal addScore #Needs work
+signal roundEnd #Needs work
 
-
-func _process(_delta):
-	pass
 
 func _on_timer_timeout():
-	print(temp_tik)
-	
 	if temp_tik < 512:
 		temp_tik = enemy_tickets/2
 	else:
 		temp_tik = enemy_tickets/16
 		if bits_needed != 8:
-			bits_needed = 8
-
+			bits_needed = 8 
 	if temp_tik > 0 or counter < 8:
 		match counter:
 			0:
 				if (temp_tik % 2 == 0 and temp_tik >= 128) or (temp_tik > 128 and temp_tik % 2 == 1):
-					spawnOne(0)
-					print("spawned 1 -128")
+					spawnOne(128)
 					tempHP = 128
 				else:
 					spawnZero()
 			1:
 				if (temp_tik % 2 == 0 and temp_tik >= 64) or (temp_tik > 64  and temp_tik % 2 == 1):
-					spawnOne(1)
-					print("spawned 1 -64")
+					spawnOne(64)
 					tempHP = 64
 				else:
 					spawnZero()
 			2:
 				if (temp_tik % 2 == 0 and temp_tik >= 32) or (temp_tik > 32  and temp_tik % 2 == 1):
-					spawnOne(2)
-					print("spawned 1 -32")
+					spawnOne(32)
 					tempHP = 32
 				else:
 					spawnZero()
 			3:
 				if (temp_tik % 2 == 0 and temp_tik >= 16) or (temp_tik > 16  and temp_tik % 2 == 1):
-					spawnOne(3)
-					print("spawned 1 -16")
+					spawnOne(16)
 					tempHP = 16
 				else:
 					spawnZero()
 			4:
 				if (temp_tik % 2 == 0 and temp_tik >= 8) or (temp_tik > 8  and temp_tik % 2 == 1):
-					spawnOne(4)
-					print("spawned 1 -8")
+					spawnOne(8)
 					tempHP = 8
 				else:
 					spawnZero()
 			5:
 				if (temp_tik % 2 == 0 and temp_tik >= 4) or (temp_tik > 4  and temp_tik % 2 == 1):
-					spawnOne(5)
-					print("spawned 1 -4")
+					spawnOne(4)
 					tempHP = 4
 				else:
 					spawnZero()
 			6:
 				if (temp_tik % 2 == 0 and temp_tik >= 2) or (temp_tik > 2  and temp_tik % 2 == 1):
-					spawnOne(6)
-					print("spawned 1 -2")
+					spawnOne(2)
 					tempHP = 2
 				else:
 					spawnZero()
 			7:
 				if temp_tik == 1:
-					spawnOne(7)
-					print("spawned 1 -1")
+					spawnOne(1)
 					if byte_count == bits_needed:
 						get_node("Timer").stop()
 						emit_signal("roundEnd")
@@ -103,13 +89,13 @@ func _on_timer_timeout():
 
 func spawnOne(health):
 	var one_path = OnePath.instantiate()
+	one_path.unitHealth = tempHP
 	add_child(one_path)
-	emit_signal("set_health", tempHP)
-	print("sent HP to spawner")
 	temp_tik -= health
 	
 func spawnZero():
 	var tempPath = path.instantiate()
+	#tempPath.unitHealth = zeroHP #???????????????
 	add_child(tempPath)
 	
 
@@ -121,7 +107,6 @@ func _on_interface_start_round():
 	else:
 		enemy_tickets *= 1.2
 	temp_tik = enemy_tickets
-	print(enemy_tickets)
 
 
 func _on_one_path_one_death(points):

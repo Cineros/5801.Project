@@ -17,11 +17,12 @@ func _physics_process(delta):
 	pass
 	
 func murderTime(delta):
+	$Timer.start()
 	rotation -= delta * speed
 	if(speed < 50):
 		speed += 2*(speed * delta)
 	else:
-		if len(targets) == 0:
+		if len(targets) == 0 and $Timer.is_stopped():
 			speed = 1
 
 
@@ -44,17 +45,12 @@ func _on_enemy_detection_range_body_entered(body):
 				tempArray.append(i)
 			
 		#print(tempArray)
-		if len(tempArray) != 0:
+		if len(tempArray) > 0:
 			murderTime(get_process_delta_time())
 
 
 func _on_enemy_detection_range_body_exited(_body):
 	targets = get_node("enemy_detection_range").get_overlapping_bodies()
-
-
-func _on_range_body_entered(_body):
-	pass
-
 
 func _on_damage_range_body_entered(body):
 		if "Enemy" in body.name:

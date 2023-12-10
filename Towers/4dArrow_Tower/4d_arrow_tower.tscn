@@ -46,6 +46,10 @@ debug_color = Color(0.701961, 0.294118, 0.968627, 0.419608)
 [node name="EDR_box" type="CollisionShape2D" parent="enemy_detection_range"]
 shape = SubResource("CircleShape2D_wd40k")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+
 [connection signal="body_entered" from="4dArrow/range" to="." method="_on_range_body_entered"]
 [connection signal="body_entered" from="4dArrow/damage_range" to="." method="_on_damage_range_body_entered"]
 [connection signal="body_entered" from="enemy_detection_range" to="." method="_on_enemy_detection_range_body_entered"]
