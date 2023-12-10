@@ -13,9 +13,9 @@ func _process(_delta):
 	pass
 
 
-func _on_path_spawner_set_health(hp):
-	emit_signal("sendHealth", hp)
-	print("sent HP to unit")
+func _on_path_spawner_set_health(pos):
+	emit_signal("sendHealth", pos)
+	print("health sent to unit")
 
 
 func _on_enemy_1_one_death(points):
@@ -23,4 +23,4 @@ func _on_enemy_1_one_death(points):
 
 
 func _on_enemy_1_request_health():
-	emit_signal("requestHealth")
+	pass

@@ -35,56 +35,56 @@ func _on_timer_timeout():
 		match counter:
 			0:
 				if (temp_tik % 2 == 0 and temp_tik >= 128) or (temp_tik > 128 and temp_tik % 2 == 1):
-					spawnOne(128)
+					spawnOne(0)
 					print("spawned 1 -128")
 					tempHP = 128
 				else:
 					spawnZero()
 			1:
 				if (temp_tik % 2 == 0 and temp_tik >= 64) or (temp_tik > 64  and temp_tik % 2 == 1):
-					spawnOne(64)
+					spawnOne(1)
 					print("spawned 1 -64")
 					tempHP = 64
 				else:
 					spawnZero()
 			2:
 				if (temp_tik % 2 == 0 and temp_tik >= 32) or (temp_tik > 32  and temp_tik % 2 == 1):
-					spawnOne(32)
+					spawnOne(2)
 					print("spawned 1 -32")
 					tempHP = 32
 				else:
 					spawnZero()
 			3:
 				if (temp_tik % 2 == 0 and temp_tik >= 16) or (temp_tik > 16  and temp_tik % 2 == 1):
-					spawnOne(16)
+					spawnOne(3)
 					print("spawned 1 -16")
 					tempHP = 16
 				else:
 					spawnZero()
 			4:
 				if (temp_tik % 2 == 0 and temp_tik >= 8) or (temp_tik > 8  and temp_tik % 2 == 1):
-					spawnOne(8)
+					spawnOne(4)
 					print("spawned 1 -8")
 					tempHP = 8
 				else:
 					spawnZero()
 			5:
 				if (temp_tik % 2 == 0 and temp_tik >= 4) or (temp_tik > 4  and temp_tik % 2 == 1):
-					spawnOne(4)
+					spawnOne(5)
 					print("spawned 1 -4")
 					tempHP = 4
 				else:
 					spawnZero()
 			6:
 				if (temp_tik % 2 == 0 and temp_tik >= 2) or (temp_tik > 2  and temp_tik % 2 == 1):
-					spawnOne(2)
+					spawnOne(6)
 					print("spawned 1 -2")
 					tempHP = 2
 				else:
 					spawnZero()
 			7:
 				if temp_tik == 1:
-					spawnOne(1)
+					spawnOne(7)
 					print("spawned 1 -1")
 					if byte_count == bits_needed:
 						get_node("Timer").stop()
@@ -104,6 +104,8 @@ func _on_timer_timeout():
 func spawnOne(health):
 	var one_path = OnePath.instantiate()
 	add_child(one_path)
+	emit_signal("set_health", tempHP)
+	print("sent HP to spawner")
 	temp_tik -= health
 	
 func spawnZero():
@@ -125,11 +127,5 @@ func _on_interface_start_round():
 func _on_one_path_one_death(points):
 	emit_signal("addScore", points)
 
-
 func _on_zero_path_zero_death():
 	emit_signal("addScore", 1)
-
-
-func _on_one_path_request_health():
-	emit_signal("set_health", tempHP)
-	print("sent HP to spawner")
