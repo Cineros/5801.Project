@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckxdjc3yuly2j"]
+
+[ext_resource type="Script" path="res://Maps/Map 2/Map2Path1.gd" id="1_4lahv"]
+[ext_resource type="PackedScene" uid="uid://d36srjoab4cb8" path="res://Enemies/Enemy1.tscn" id="1_wlplw"]
+
+[sub_resource type="Curve2D" id="Curve2D_plfh5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2432, 512, 104.271, 13.4543, -104.271, -13.4543, 832, 512, 4.49492, -49.4441, -4.49492, 49.4441, 512, 832, -47.0902, -99.2258, 47.0902, 99.2258, 512, 1024, -65.5899, -5.04538, 65.5899, 5.04538, 768, 1280, -58.8628, 11.7725, 58.8628, -11.7725, 1472, 1280, -1.68179, 30.2723, 1.68179, -30.2723, 1664, 1088, 42.6536, 69.5926, -42.6536, -69.5926, 1664, 448, 92.0419, 11.2246, -92.0419, -11.2246, 1472, 256, 83.0622, -11.2246, -83.0622, 11.2246, 832, 256, 0, 0, 0, 0, 704, 384, -3.36359, -70.6353, 3.36359, 70.6353, 704, 640, -23.5451, -1.68179, 23.5451, 1.68179, 768, 768, -87.4532, -1.68179, 87.4532, 1.68179, 1024, 768, -141.271, 0, 141.271, 0, 1728, 1024, -50.4538, -1.68179, 50.4538, 1.68179, 1920, 1024, -45.4084, -3.36359, 45.4084, 3.36359, 2048, 1088, 0, 0, 0, 0, 2304, 1088, 0, 0, 0, 0, 2048, 1088)
+}
+point_count = 19
+
+[node name="Path2D" type="Path2D"]
+curve = SubResource("Curve2D_plfh5")
+script = ExtResource("1_4lahv")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(2432, 512)
+rotation = -1.5837
+rotates = false
+loop = false
+
+[node name="Enemy1" parent="PathFollow2D" instance=ExtResource("1_wlplw")]
+position = Vector2(-1.98682, -1.02588)
+rotation = 1.5837
+scale = Vector2(0.5, 0.5)

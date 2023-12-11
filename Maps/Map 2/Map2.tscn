@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbuplq3cahyqr"]
+[gd_scene load_steps=5 format=3 uid="uid://dbuplq3cahyqr"]
 
 [ext_resource type="PackedScene" uid="uid://dq1wltr4x4pn4" path="res://Tiles/tile_map.tscn" id="1_ustjq"]
-[ext_resource type="Script" path="res://Maps/Map 2/PathSpawner2.gd" id="2_5ojd5"]
+[ext_resource type="PackedScene" uid="uid://bpbrs864wfba" path="res://Maps/Map 2/path_spawner_2.tscn" id="2_wk0rj"]
+[ext_resource type="PackedScene" uid="uid://bgu60eus3wlk4" path="res://interface/interface.tscn" id="3_7tj6o"]
+[ext_resource type="PackedScene" uid="uid://dkpvpgjrknins" path="res://gen_sprites/my_computer.tscn" id="4_jqubr"]
 
 [node name="Map2" type="Node2D"]
 
@@ -13,11 +15,15 @@ position = Vector2(-2, 1)
 anchor_mode = 0
 zoom = Vector2(0.45, 0.422)
 
-[node name="PathSpawner2" type="Node2D" parent="."]
-position = Vector2(2241, 1438)
-script = ExtResource("2_5ojd5")
+[node name="PathSpawner2" parent="." instance=ExtResource("2_wk0rj")]
 
-[node name="Timer" type="Timer" parent="PathSpawner2"]
-autostart = true
+[node name="Interface" parent="." instance=ExtResource("3_7tj6o")]
+offset_left = 58.0
+offset_top = 41.0
+offset_right = 58.0
+offset_bottom = 41.0
+scale = Vector2(2, 2)
 
-[connection signal="timeout" from="PathSpawner2/Timer" to="PathSpawner2" method="_on_timer_timeout"]
+[node name="my_computer" parent="." instance=ExtResource("4_jqubr")]
+position = Vector2(2222, 1087)
+scale = Vector2(2, 2)
