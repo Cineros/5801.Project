@@ -4,6 +4,7 @@ extends Control
 signal start_round
 signal damage
 signal roundEnd
+signal addScore
 
 # create enemy spawn signal to send to counter
 signal enemy_spawned(count)
@@ -27,3 +28,7 @@ func _on_path_spawner_round_end():
 	emit_signal("roundEnd")
 
 
+
+
+func _on_path_spawner_add_score(score):
+	emit_signal("addScore", score)

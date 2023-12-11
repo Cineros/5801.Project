@@ -40,6 +40,7 @@ script = ExtResource("4_hk1vl")
 position = Vector2(-7, 10)
 
 [connection signal="hp_damage" from="my_computer" to="Interface" method="_on_my_computer_hp_damage"]
+[connection signal="addScore" from="Interface" to="Interface/money_counter" method="_on_interface_add_score"]
 [connection signal="start_round" from="Interface" to="PathSpawner" method="_on_interface_start_round"]
 [connection signal="money_change" from="Interface/buy_grid" to="Interface/money_counter" method="_on_buy_grid_money_change"]
 [connection signal="tower_bought" from="Interface/buy_grid/pointer_button" to="Interface/buy_grid" method="_on_pointer_button_tower_bought"]
@@ -47,6 +48,7 @@ position = Vector2(-7, 10)
 [connection signal="tower_bought" from="Interface/buy_grid/cursor_button" to="Interface/buy_grid" method="_on_cursor_button_tower_bought"]
 [connection signal="cash_amount" from="Interface/money_counter" to="Interface/buy_grid" method="_on_money_counter_cash_amount"]
 [connection signal="money" from="Interface/start_button" to="Interface/money_counter" method="_on_start_button_money"]
+[connection signal="addScore" from="PathSpawner" to="Interface" method="_on_path_spawner_add_score"]
 [connection signal="roundEnd" from="PathSpawner" to="Interface" method="_on_path_spawner_round_end"]
 
 [editable path="Interface"]

@@ -18,3 +18,7 @@ func _on_buy_grid_money_change(price):
 	else:
 		$Label.text = str(wallet)
 	emit_signal("cash_amount",wallet)
+
+
+func _on_interface_add_score(score):
+	wallet += score
