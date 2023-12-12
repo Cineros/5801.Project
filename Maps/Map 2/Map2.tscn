@@ -103,31 +103,24 @@ offset_right = 197.0
 offset_bottom = 34.0
 scale = Vector2(2, 2)
 
-[node name="PathSpawner2" parent="." instance=ExtResource("2_wk0rj")]
+[node name="PathSpawner" parent="." instance=ExtResource("2_wk0rj")]
 
-[node name="Timer" parent="PathSpawner2" index="0"]
+[node name="Timer" parent="PathSpawner" index="0"]
 wait_time = 0.5
 autostart = false
 
 [connection signal="hp_damage" from="my_computer" to="Interface" method="_on_my_computer_hp_damage"]
-[connection signal="addScore" from="Interface" to="Interface/money_counter2" method="_on_interface_add_score"]
-[connection signal="damage" from="Interface" to="Interface/Hbar2" method="_on_interface_damage"]
-[connection signal="health_changed" from="Interface" to="Interface/Hbar2" method="_on_interface_health_changed"]
-[connection signal="start_round" from="Interface" to="PathSpawner2" method="_on_interface_start_round"]
-[connection signal="money_change" from="Interface/buy_grid2" to="Interface/money_counter2" method="_on_buy_grid_2_money_change"]
+[connection signal="start_round" from="Interface" to="PathSpawner" method="_on_interface_start_round"]
 [connection signal="tower_bought" from="Interface/buy_grid2/pointer_button" to="Interface/buy_grid2" method="_on_pointer_button_tower_bought"]
 [connection signal="tower_bought" from="Interface/buy_grid2/Arrow_button" to="Interface/buy_grid2" method="_on_arrow_button_tower_bought"]
 [connection signal="tower_bought" from="Interface/buy_grid2/cursor_button" to="Interface/buy_grid2" method="_on_cursor_button_tower_bought"]
-[connection signal="cash_amount" from="Interface/money_counter2" to="Interface/buy_grid2" method="_on_money_counter_2_cash_amount"]
-[connection signal="money" from="Interface/start_button2" to="Interface/money_counter2" method="_on_start_button_2_money"]
-[connection signal="ready_button_pressed" from="Interface/start_button2" to="Interface" method="_on_start_button_2_ready_button_pressed"]
-[connection signal="addScore" from="PathSpawner2" to="Interface" method="_on_path_spawner_2_add_score"]
-[connection signal="roundEnd" from="PathSpawner2" to="Interface" method="_on_path_spawner_2_round_end"]
-[connection signal="oneDeath" from="PathSpawner2/onePath" to="PathSpawner2" method="_on_one_path_one_death"]
+[connection signal="addScore" from="PathSpawner" to="Interface" method="_on_path_spawner_2_add_score"]
+[connection signal="roundEnd" from="PathSpawner" to="Interface" method="_on_path_spawner_2_round_end"]
+[connection signal="oneDeath" from="PathSpawner/onePath" to="PathSpawner" method="_on_one_path_one_death"]
 
 [editable path="Interface/Hbar2"]
 [editable path="Interface/Hbar2/counter"]
 [editable path="Interface/buy_grid2"]
 [editable path="Interface/money_counter2"]
 [editable path="Interface/round_counter2"]
-[editable path="PathSpawner2"]
+[editable path="PathSpawner"]
