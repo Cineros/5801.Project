@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://083lrp07ky0l"]
+
+[ext_resource type="Script" path="res://Maps/Map 5/PathSpawner5.gd" id="1_flstq"]
+[ext_resource type="PackedScene" uid="uid://65e6faehhpne" path="res://Maps/Map 5/Map5Path1.tscn" id="2_7c6ui"]
+[ext_resource type="PackedScene" uid="uid://ceekgeajnjf2l" path="res://Maps/Map 5/Map5Path.tscn" id="3_ii35k"]
+
+[node name="PathSpawner5" type="Node2D"]
+script = ExtResource("1_flstq")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="onePath" parent="." instance=ExtResource("2_7c6ui")]
+
+[node name="zeroPath" parent="." instance=ExtResource("3_ii35k")]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="oneDeath" from="onePath" to="." method="_on_one_path_one_death"]
+[connection signal="zeroDeath" from="zeroPath" to="." method="_on_zero_path_zero_death"]

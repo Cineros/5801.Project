@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://65e6faehhpne"]
+
+[ext_resource type="PackedScene" uid="uid://d36srjoab4cb8" path="res://Enemies/Enemy1.tscn" id="1_got5a"]
+[ext_resource type="Script" path="res://Maps/Map 5/Map5Path1.gd" id="1_mjdvq"]
+
+[sub_resource type="Curve2D" id="Curve2D_a03ki"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 314, 1433, -4.75683, 88.0013, 4.75683, -88.0013, 326, 717, -90.3797, 4.75683, 90.3797, -4.75683, 454, 577, -78.4877, -2.37841, 78.4877, 2.37841, 1202, 581, -27.3396, -56.815, 27.3396, 56.815, 1406, 761, 31.4289, -52.9926, -31.4289, 52.9926, 1410, 901, 8.84621, -85.8655, -8.84621, 85.8655, 1194, 1097, -74.7743, 0, 74.7743, 0, 1286, 1281, -57.0819, 2.37841, 57.0819, -2.37841, 1994, 1281, -6.86826, 62.8823, 6.86826, -62.8823, 2230, 1053, 19.0273, 66.5956, -19.0273, -66.5956, 2234, 317, 52.3251, 2.37841, -52.3251, -2.37841, 2142, 249, 0, 0, 0, 0, 302, 253)
+}
+point_count = 13
+
+[node name="Path2D" type="Path2D"]
+curve = SubResource("Curve2D_a03ki")
+script = ExtResource("1_mjdvq")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(314, 1433)
+rotation = -1.55404
+rotates = false
+loop = false
+
+[node name="Enemy1" parent="PathFollow2D" instance=ExtResource("1_got5a")]
+position = Vector2(1.03345, 1.98297)
+rotation = 1.55404
+
+[connection signal="oneDeath" from="." to="." method="_on_one_death"]
+[connection signal="oneDeath" from="PathFollow2D/Enemy1" to="." method="_on_enemy_1_one_death"]

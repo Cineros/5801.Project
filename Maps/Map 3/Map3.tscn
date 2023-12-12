@@ -26,6 +26,7 @@ zoom = Vector2(0.45, 0.422)
 script = ExtResource("2_xuyix")
 
 [node name="Timer" type="Timer" parent="PathSpawner"]
+wait_time = 0.5
 
 [node name="zeroPath" parent="PathSpawner" instance=ExtResource("3_of4j2")]
 

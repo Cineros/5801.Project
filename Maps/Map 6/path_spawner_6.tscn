@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwupkls11y2xn"]
+
+[ext_resource type="Script" path="res://Maps/Map 6/PathSpawner6.gd" id="1_dgqos"]
+[ext_resource type="PackedScene" uid="uid://co1lai0s71k0y" path="res://Maps/Map 6/Map6Path1.tscn" id="2_7mwfv"]
+[ext_resource type="PackedScene" uid="uid://ckpsi1kvr1cih" path="res://Maps/Map 6/Map6Path.tscn" id="3_neaft"]
+
+[node name="PathSpawner6" type="Node2D"]
+script = ExtResource("1_dgqos")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="onePath" parent="." instance=ExtResource("2_7mwfv")]
+
+[node name="zeroPath" parent="." instance=ExtResource("3_neaft")]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="oneDeath" from="onePath" to="." method="_on_one_path_one_death"]
+[connection signal="zeroDeath" from="zeroPath" to="." method="_on_zero_path_zero_death"]
