@@ -7,3 +7,7 @@ func _on_interface_damage(hp):
 		pass
 	$counter/Label.text = str(hp)
 	$TextureProgressBar.value = hp
+
+
+func _on_interface_health_changed(health):
+	pass # Replace with function body.

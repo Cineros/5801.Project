@@ -14,3 +14,7 @@ func _on_computer_hitbox_body_entered(body):
 		if comp_health == 0:
 			pass
 		#print(comp_health)
+
+
+func _on_start_button_2_ready_button_pressed():
+	pass # Replace with function body.

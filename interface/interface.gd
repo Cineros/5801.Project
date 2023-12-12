@@ -32,3 +32,15 @@ func _on_path_spawner_round_end():
 
 func _on_path_spawner_add_score(score):
 	emit_signal("addScore", score)
+
+
+func _on_path_spawner_2_add_score(score):
+	emit_signal("addScore", score)
+
+
+func _on_path_spawner_2_round_end():
+	emit_signal("roundEnd")
+
+
+func _on_start_button_2_ready_button_pressed():
+	emit_signal("start_round")
