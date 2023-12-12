@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://biputv5y3j8uh"]
+[gd_scene load_steps=12 format=3 uid="uid://biputv5y3j8uh"]
 
 [ext_resource type="PackedScene" uid="uid://dq1wltr4x4pn4" path="res://Tiles/tile_map.tscn" id="1_nt3rl"]
 [ext_resource type="Script" path="res://Maps/Map 3/PathSpawner3.gd" id="2_xuyix"]
+[ext_resource type="PackedScene" uid="uid://dkpvpgjrknins" path="res://gen_sprites/my_computer.tscn" id="3_3utco"]
+[ext_resource type="PackedScene" uid="uid://clpa6vsyc20s2" path="res://Maps/Map 3/Map3Path.tscn" id="3_of4j2"]
+[ext_resource type="Script" path="res://interface/interface.gd" id="4_j2g8x"]
+[ext_resource type="PackedScene" uid="uid://bej1u1ltuecr3" path="res://Maps/Map 3/Map3Path1.tscn" id="4_swwfd"]
+[ext_resource type="PackedScene" uid="uid://cwimywvr3ay2" path="res://interface/health_bar/hbar.tscn" id="5_ywsy0"]
+[ext_resource type="PackedScene" uid="uid://bmqj46uvenr0d" path="res://interface/buy_menu/tower_grid.tscn" id="6_1wjca"]
+[ext_resource type="PackedScene" uid="uid://dst2oojr6y3gs" path="res://interface/buy_menu/money_counter/money_counter.tscn" id="7_d3jug"]
+[ext_resource type="PackedScene" uid="uid://cj2a7aykn6l6n" path="res://interface/start_button/start_button.tscn" id="8_78dkd"]
+[ext_resource type="PackedScene" uid="uid://bpucj61t6rawa" path="res://interface/round_counter/round_counter.tscn" id="9_3aqe4"]
 
 [node name="Map3" type="Node2D"]
 
@@ -13,10 +22,106 @@ position = Vector2(-2, 1)
 anchor_mode = 0
 zoom = Vector2(0.45, 0.422)
 
-[node name="PathSpawner3" type="Node2D" parent="."]
+[node name="PathSpawner" type="Node2D" parent="."]
 script = ExtResource("2_xuyix")
 
-[node name="Timer" type="Timer" parent="PathSpawner3"]
-autostart = true
+[node name="Timer" type="Timer" parent="PathSpawner"]
 
-[connection signal="timeout" from="PathSpawner3/Timer" to="PathSpawner3" method="_on_timer_timeout"]
+[node name="zeroPath" parent="PathSpawner" instance=ExtResource("3_of4j2")]
+
+[node name="onePath" parent="PathSpawner" instance=ExtResource("4_swwfd")]
+position = Vector2(-4, 3)
+
+[node name="my_computer" parent="." instance=ExtResource("3_3utco")]
+position = Vector2(736, 642)
+scale = Vector2(2, 2)
+
+[node name="Interface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 62.0
+offset_top = 40.0
+offset_right = 62.0
+offset_bottom = 40.0
+scale = Vector2(2, 2)
+script = ExtResource("4_j2g8x")
+
+[node name="Hbar" parent="Interface" instance=ExtResource("5_ywsy0")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 293.0
+offset_top = 14.0
+offset_right = 893.0
+offset_bottom = 67.0
+grow_horizontal = 2
+
+[node name="buy_grid" parent="Interface" instance=ExtResource("6_1wjca")]
+layout_mode = 1
+anchors_preset = 2
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 475.5
+offset_right = 46.0
+offset_bottom = 603.5
+grow_horizontal = 1
+grow_vertical = 0
+
+[node name="Label" parent="Interface/buy_grid/pointer_button" index="1"]
+text = "$40"
+
+[node name="Label" parent="Interface/buy_grid/Arrow_button" index="1"]
+text = "$20"
+
+[node name="Label" parent="Interface/buy_grid/cursor_button" index="1"]
+offset_left = 42.0
+offset_top = 0.0
+offset_right = 82.0
+offset_bottom = 40.0
+
+[node name="money_counter" parent="Interface" instance=ExtResource("7_d3jug")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 107.0
+offset_top = 494.0
+offset_right = 274.0
+offset_bottom = 582.0
+grow_vertical = 0
+
+[node name="start_button" parent="Interface" instance=ExtResource("8_78dkd")]
+layout_mode = 1
+offset_left = 526.0
+offset_top = 330.0
+offset_right = 526.0
+offset_bottom = 330.0
+scale = Vector2(2, 2)
+
+[node name="round_counter" parent="Interface" instance=ExtResource("9_3aqe4")]
+layout_mode = 0
+offset_left = 157.0
+offset_top = 8.0
+offset_right = 197.0
+offset_bottom = 34.0
+scale = Vector2(2, 2)
+
+[connection signal="addScore" from="PathSpawner" to="Interface" method="_on_path_spawner_add_score"]
+[connection signal="roundEnd" from="PathSpawner" to="Interface" method="_on_path_spawner_round_end"]
+[connection signal="timeout" from="PathSpawner/Timer" to="PathSpawner" method="_on_timer_timeout" flags=18]
+[connection signal="hp_damage" from="my_computer" to="Interface" method="_on_my_computer_hp_damage"]
+[connection signal="damage" from="Interface" to="Interface/Hbar" method="_on_interface_damage" flags=18]
+[connection signal="health_changed" from="Interface" to="Interface/Hbar" method="_on_interface_health_changed" flags=18]
+[connection signal="roundEnd" from="Interface" to="PathSpawner" method="_on_interface_round_end"]
+[connection signal="roundEnd" from="Interface" to="Interface/start_button" method="_on_interface_round_end" flags=18]
+[connection signal="start_round" from="Interface" to="PathSpawner" method="_on_interface_start_round"]
+[connection signal="start_round" from="Interface" to="Interface/start_button" method="_on_interface_start_round" flags=18]
+[connection signal="ready_button_pressed" from="Interface/start_button" to="Interface" method="_on_start_button_ready_button_pressed" flags=18]
+
+[editable path="Interface/Hbar"]
+[editable path="Interface/Hbar/counter"]
+[editable path="Interface/buy_grid"]

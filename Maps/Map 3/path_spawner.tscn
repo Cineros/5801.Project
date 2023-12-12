@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c25nn0whgfpsb"]
+
+[ext_resource type="Script" path="res://Maps/Map 3/PathSpawner3.gd" id="1_rnu2m"]
+[ext_resource type="PackedScene" uid="uid://clpa6vsyc20s2" path="res://Maps/Map 3/Map3Path.tscn" id="2_jow2n"]
+[ext_resource type="PackedScene" uid="uid://bej1u1ltuecr3" path="res://Maps/Map 3/Map3Path1.tscn" id="3_e4xlt"]
+
+[node name="PathSpawner" type="Node2D"]
+script = ExtResource("1_rnu2m")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="zeroPath" parent="." instance=ExtResource("2_jow2n")]
+
+[node name="onePath" parent="." instance=ExtResource("3_e4xlt")]
+position = Vector2(-4, 3)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

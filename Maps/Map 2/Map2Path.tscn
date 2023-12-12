@@ -22,4 +22,3 @@ loop = false
 [node name="Enemy 0" parent="PathFollow2D" instance=ExtResource("1_ow03a")]
 position = Vector2(0.987, 1.0127)
 rotation = 1.5837
-scale = Vector2(1, 1)

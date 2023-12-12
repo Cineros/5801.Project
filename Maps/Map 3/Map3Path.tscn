@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://clpa6vsyc20s2"]
+[gd_scene load_steps=4 format=3 uid="uid://clpa6vsyc20s2"]
 
+[ext_resource type="Script" path="res://Maps/Map 3/Map3Path.gd" id="1_5wtte"]
 [ext_resource type="PackedScene" uid="uid://df8o0bju0hgqn" path="res://Enemies/Enemy0.tscn" id="1_06knq"]
 
 [sub_resource type="Curve2D" id="Curve2D_yxx5y"]
@@ -10,6 +11,7 @@ point_count = 18
 
 [node name="Path2D" type="Path2D"]
 curve = SubResource("Curve2D_yxx5y")
+script = ExtResource("1_5wtte")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 position = Vector2(164, 1426)
