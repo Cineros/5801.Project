@@ -8,7 +8,6 @@ var hp_set = false
 
 
 signal oneDeath
-signal requestHealth
 
 func destroy():
 	queue_free()

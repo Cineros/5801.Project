@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b4gvrrr2kx8gl"]
 
 [ext_resource type="PackedScene" uid="uid://dq1wltr4x4pn4" path="res://Tiles/tile_map.tscn" id="1_bh08y"]
-[ext_resource type="Script" path="res://Maps/Map 4/PathSpawner4.gd" id="2_88vy7"]
+[ext_resource type="PackedScene" uid="uid://c5jkk5u3rbnfv" path="res://Maps/Map 3/path_spawner_4.tscn" id="2_eerco"]
 
 [node name="Map 4" type="Node2D"]
 
@@ -13,10 +13,4 @@ position = Vector2(-2, 1)
 anchor_mode = 0
 zoom = Vector2(0.45, 0.422)
 
-[node name="PathSpawner4" type="Node2D" parent="."]
-script = ExtResource("2_88vy7")
-
-[node name="Timer" type="Timer" parent="PathSpawner4"]
-autostart = true
-
-[connection signal="timeout" from="PathSpawner4/Timer" to="PathSpawner4" method="_on_timer_timeout"]
+[node name="PathSpawner4" parent="." instance=ExtResource("2_eerco")]
